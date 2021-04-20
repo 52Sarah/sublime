@@ -1,0 +1,7 @@
+// These settings override both User and Default settings for the Log4jView syntax
+{
+  "detect_indentation": false,
+  "line_numbers": true,
+  "word_wrap": false,
+  "show_definitions": false,
+}

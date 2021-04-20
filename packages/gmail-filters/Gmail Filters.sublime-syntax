@@ -1,0 +1,167 @@
+%YAML 1.2
+---
+name: Gmail Filters
+file_extensions:
+  - .gmail-filters
+first_line_match: <\?xml version='1\.0' encoding='UTF\-8'\?>
+scope: text.xml text.gmail-filters
+variables:
+  # This is the full XML Name production, but should not be used where namespaces
+  # are possible. Those locations should use a qualified_name.
+  name: '[[:alpha:]:_][[:alnum:]:_.-]*'
+  # This is the form that allows a namespace prefix (ns:) followed by a local
+  # name. The captures are:
+  #  1: namespace prefix name
+  #  2: namespace prefix colon
+  #  3: local tag name
+  qualified_name: '(?:([[:alpha:]_][[:alnum:]_.-]*)(:))?([[:alpha:]_][[:alnum:]_.-]*)'
+  #
+  # Bold the 999x__SNAKE_CASE "names" for each filter.
+  filter_name: '[A-Z]?\d{2,3}[a-z]*_+[[:alnum:]_]+'
+  #
+  operator_only: '((-?)(FROM|TO|SUBJECT|LIST)(:))'
+    
+contexts:
+  main:
+    - match: '(<\?)(xml)(?=\s)'
+      captures:
+        1: punctuation.definition.tag.begin
+        2: entity.name.tag
+      push:
+        - meta_scope: meta.tag.preprocessor
+        - match: \?>
+          scope: punctuation.definition.tag.end
+          pop: true
+        - match: '\s+{{qualified_name}}(=)?'
+          captures:
+            1: entity.other.attribute-name.namespace
+            2: entity.other.attribute-name punctuation.separator.namespace
+            3: entity.other.attribute-name.localname
+            4: punctuation.separator.key-value
+        - include: single-quoted-string
+        - include: double-quoted-string
+
+    - match: '<!--'
+      scope: punctuation.definition.comment.begin
+      push:
+        - meta_scope: comment.block
+        - match: '-->'
+          scope: punctuation.definition.comment.end
+          pop: true
+        - match: '{{filter_name}}'
+          scope: entity.name.section
+        - match: '-{2,}'
+          scope: invalid.illegal.double-hyphen-within-comment
+
+    - match: '(<)(/?feed)'
+      captures:
+        1: punctuation.definition.tag.begin
+        2: entity.name.tag.feed
+      push:
+        - meta_scope: meta.tag.feed
+        - match: /?>
+          scope: punctuation.definition.tag.end
+          pop: true
+        - include: tag-stuff
+    
+    - match: '(<)(/?entry)'
+      captures:
+        1: punctuation.definition.tag.begin
+        2: entity.name.tag.entry
+      push:
+        - meta_scope: meta.tag.entry
+        - match: /?>
+          scope: punctuation.definition.tag.end
+          pop: true
+        - include: tag-stuff
+        
+    # highlight label property's value
+    - match: "(<)(apps)(:)(property) (name)(=)('label') (value)(=)('([^']+)')"
+      captures:
+        1: punctuation.definition.tag_.begin
+        2: entity.name.tag_.namespace
+        3: punctuation.separator.namespace
+        4: entity.name.tag_.localname
+        5: entity.other.attribute-name
+        6: punctuation.separator.key-value
+        7: string.quoted.single
+        8: entity.other.attribute-name
+        9: punctuation.separator.key-value
+        10: string.quoted.single
+        11: entity.name.type
+      push:
+        - meta_scope: meta.tag.property
+        - match: /?>
+          scope: punctuation.definition.tag_.end
+          pop: true
+        - include: tag-stuff
+
+    - match: (<)(apps)(:)(property)
+      captures:
+        1: punctuation.definition.tag_.begin
+        2: entity.name.tag_.namespace
+        3: entity.name.tag punctuation.separator.namespace
+        4: entity.name.tag_.localname
+      push:
+        - meta_scope: meta.tag.property
+        - match: /?>
+          scope: punctuation.definition.tag_.end
+          pop: true
+        - include: tag-stuff
+
+  tag-stuff:
+    - match: '(?:\s+|^){{qualified_name}}\s*(=)'
+      captures:
+        1: entity.other.attribute-name.namespace
+        2: entity.other.attribute-name punctuation.separator.namespace
+        3: entity.other.attribute-name.localname
+        4: punctuation.separator.key-value
+    - match: '(?:\s+|^)([[:alnum:]:_.-]+)\s*(=)'
+      captures:
+        1: invalid.illegal.bad-attribute-name
+        2: punctuation.separator.key-value
+    - include: single-quoted-string
+    - include: double-quoted-string
+
+  single-quoted-string:
+    - match: "'"
+      scope: punctuation.definition.string.begin
+      push:
+        - meta_scope: string.quoted.single
+        - match: "'"
+          scope: punctuation.definition.string.end
+          pop: true
+        - match: '{{filter_name}}'
+          scope: entity.name.type
+        - match: '((-?)(LABEL|IN|IS|BEFORE|AFTER|SIZE)(:)(?:(?:(?:\{)(.+)(?:\})|(?:\()(.+)(?:\))|(?:")(.+)(?:")|([[:alnum:]#/\-]+)(?=[\s\n\)\}"]))))'
+          captures:
+            1: .operator_and_value
+            2: punctuation.separator
+            3: keyword entity.name.type
+            4: punctuation.separator
+            5: entity.name.type
+            6: entity.name.type
+            7: entity.name.type
+            8: entity.name.type
+        - match: '{{operator_only}}'
+          captures:
+            1: .operator_only
+            2: punctuation.separator
+            3: keyword entity.name.type
+            4: punctuation.separator
+        - match: 'AND|OR'
+          scope: keyword
+        - include: double-quoted-string
+        - match: '(?<="\s)AROUND(?=\s+")'
+          scope: keyword
+        - match: '(?<!"\s)AROUND(?!\s+")'
+          scope: entity.name.type
+
+  double-quoted-string:
+    - match: '"'
+      scope: punctuation.definition.string.begin
+      push:
+        - meta_scope: string.quoted.double
+        - match: '"'
+          scope: punctuation.definition.string.end
+          pop: true

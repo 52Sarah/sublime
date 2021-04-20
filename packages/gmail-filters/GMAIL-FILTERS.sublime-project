@@ -1,0 +1,20 @@
+{
+  "settings": {
+    "color_scheme": "Packages/Color Scheme - Legacy/iPlastic.tmTheme",
+  },
+	"folders":
+	[
+		{
+      "name": "GMAIL-FILTERS",
+      "path": "~/ttpp/gmail-filters",
+		},
+    {
+      "name": "$SUBLIME/User",
+      "path": "~/prefs/sublime/User",
+    },
+    {
+      "name": "$SUBLIME/packages/Gmail Filters",
+      "path": "~/prefs/sublime/Gmail Filters",
+    },
+  ],
+}

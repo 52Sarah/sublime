@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+  <logger name="com.netflix" level="WARN"/>
+  <logger name="org.springframework" level="WARN"/>
+  <logger name="org.springframework.web" level="INFO"/>
+
+  <!-- For local profile, use console appender. -->
+  <springProfile name="local">
+    <root level="INFO" additive="true">
+      <appender-ref ref="CONSOLE"/>
+    </root>
+  </springProfile>
+
+  <!-- For all deployments, use json structured logs. -->
+  <springProfile name="!local">
+    <root level="INFO" additive="false">
+      <appender-ref ref="app"/>
+    </root>
+  </springProfile>
+
+</configuration>

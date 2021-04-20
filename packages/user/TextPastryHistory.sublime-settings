@@ -1,0 +1,68 @@
+{
+	"history":
+	[
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "help",
+					"threshold": 3
+				},
+				"command": "text_pastry_insert_text",
+				"text": "help"
+			},
+			"key": "657f8b8da628ef83cf69101b6817150a",
+			"label": "help"
+		},
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "/i",
+					"threshold": 3
+				},
+				"command": "text_pastry_insert_text",
+				"text": "/i"
+			},
+			"key": "79b311621c5110d060c1de2728379125",
+			"label": "/i"
+		},
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "\\i8"
+				},
+				"command": "text_pastry_step",
+				"text": "\\i8"
+			},
+			"key": "c0fe4e53f6724c4bea36f8a43c36d96f",
+			"label": "\\i8"
+		},
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "1"
+				},
+				"command": "text_pastry_step",
+				"text": "\\i"
+			},
+			"key": "1bd7ee1ce72751da4e64129f6d32db41",
+			"label": "\\i"
+		}
+	],
+	"last_command":
+	{
+		"args":
+		{
+			"text": "1"
+		},
+		"command": "text_pastry_step",
+		"text": "\\i"
+	}
+}

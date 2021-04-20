@@ -1,0 +1,373 @@
+/********
+  In an effort to familiarize myself with IntelliJ's key mappings, this mapping file
+  attempts to swap out Sublime's elegant mappings for IntelliJ's insanity. Unless otherwise
+  notes, keystrokes are an attempt to match up with Intellij IDEA.
+*/
+[
+  //  AUTO-INDENT:              [⌘]+K, [⌘]+I
+  {"keys": ["command+k", "command+i"], "command": "reindent", "args": {"single_line": true}},
+
+  //
+  //  Sublime's built-in bookmark system.
+  //
+  //  BOOKMARK, TOGGLE:         [⌘]+F3
+  //  - plus defaults:          [⌘]+F2 or [⌃]+[Shift]+R
+  {"keys": ["super+f3"], "command": "toggle_bookmark"},
+  //
+  //  BOOKMARKS, NEXT/PREV:   F3 / [Shift]+F3
+  //  - plus defaults:        F2 or [⌃]+R / Shift-F2
+  {"keys": ["f3"], "command": "next_bookmark"},
+  {"keys": ["shift+f3"], "command": "prev_bookmark"},
+  //
+  //  BOOKMARKS, VIEW ALL:      [⌘]+[Shift]+F3
+  {"keys": ["command+shift+f3"], "command": "view_bookmarks"},
+  //
+  //  plus built-in defaults:
+  //    CLEAR BOOKMARKS:        [⌘]+[Shift]+F2
+  //    SELECT ALL BOOKMARKS:   [⌥]+F2
+
+  //  COMMAND PALETTE:          [⌘]+[Shift]+A
+  //  - plus default:           [⌘]+[Shift]+P
+  //  - plus default:           [⌘]+[Shift]+P
+  {"keys": ["command+shift+a"], "command": "show_overlay", "args": {"overlay": "command_palette"}},
+
+
+  //  FIND/REPLACE IN FILES:    [⌘]+[⌥]+F
+  //  - plus default:           [⌘]+[Shift]+F
+  {"keys": ["command+option+f"], "command": "show_panel", "args": {"panel": "find_in_files"}},
+  //
+  //  FIND, REPLACE:            [⌘]+R
+  {"keys": ["command+r"], "command": "show_panel", "args": {"panel": "replace", "reverse": false}},
+  //
+  //  FIND, TOGGLE REGEX:       [⌘]+K, [⌘]+[Shift]+R
+  //  - sublime default remapped to refresh project: [⌘]+[⌥]+R
+  {"keys": ["command+k", "command+shift+r"], "command": "toggle_regex", "args": [{"key": "setting.is_widget", "operator": "equal", "operand": true }],},
+  //
+  //  FIND, TOGGLE CS/CI:       [⌘]+K, [⌘]+[Shift]+C
+  //  - plus default:           [⌘]+[⌥]+C
+  {"keys": ["command+k", "command+shift+c"], "command": "toggle_case_sensitive", "args": [{"key": "setting.is_widget", "operator": "equal", "operand": true }],},
+
+
+  //  GOTO DECLARATION:         [⌘]+B
+  //  - plus  default:          [⌘]+[⌥]+DOWN
+  {"keys": ["command+b"], "command": "goto_definition"},
+  //
+  //  GOTO FILE START/END:      [⌘]+HOME / [⌘]+END
+  //  - plus default:           [⌘]+UP / [⌘]+DOWN
+  {"keys": ["command+home"],       "command": "move_to", "args": {"to": "bof"}},
+  {"keys": ["command+end"],        "command": "move_to", "args": {"to": "eof"}},
+  {"keys": ["command+shift+home"], "command": "move_to", "args": {"to": "bof", "extend": true}},
+  {"keys": ["command+shift+end"],  "command": "move_to", "args": {"to": "eof", "extend": true}},
+  //
+  //  GOTO PREV/NEXT LOC:       [⌘]+[ / [⌘]+]
+  //  - plus defaults:          [⌃]+MINUS / [⌃]+[Shift]+MINUS
+  {"keys": ["command+["], "command": "jump_back"},
+  {"keys": ["command+]"], "command": "jump_forward"},
+  //
+  //  GOTO SYMBOL:              [⌘]+[⌥]+O
+  //  - clobbers sublime default: toggle_overwrite
+  {"keys": ["command+option+o"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"}},
+
+
+  //  HIPPIE COMPLETION:        [⌥]+/ or [⌃]+PERIOD
+  // - plus default:            [⌃]+SPACE
+  {"keys": ["control+."], "command": "auto_complete"},
+  {"keys": ["option+/"],  "command": "auto_complete"},
+
+  //  KEY BINDINGS:             [⌘]+[⌃]+COMMA
+  {"keys": ["command+control+,"], "command": "edit_settings", "args": {"base_file": "${packages}/Default/Default ($platform).sublime-keymap", "default": "[\n\t$0\n]\n"}},
+
+
+  //  LINE, DELETE:             [⌘]+BACKSPACE
+  //  - sublime default remapped to duplicate line:  [⌘]+D
+  {"keys": ["command+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"}},
+  //
+  //  LINE, DUPLICATE:          [⌘]+D
+  //  - plus default:           [⌘]+[Shift]+D
+  {"keys": ["command+d"], "command": "duplicate_line"},
+  //
+  //  LINE, MOVE UP/DOWN:       [⌥]+[Shift]+UP / [⌥]+[Shift]+DOWN
+  //  - plus defaults:          [⌘]+[⌃]+UP / [⌘]+[⌃]+DOWN
+  {"keys": ["option+shift+up"],   "command": "swap_line_up"},
+  {"keys": ["option+shift+down"], "command": "swap_line_down"},
+
+
+  //  MULTI-CURSOR:             [^]+G
+  //  - sublime default remapped to delete-right: [⌃]+D (not sure where)
+  {"keys": ["control+g"], "command": "find_under_expand"},
+
+
+  //  PROJECT, EDIT:            [⌘]­­­+[⌥]+COMMA
+  {"keys": ["command+option+,"], "command": "open_file", "args":  {"file": "${project}"}},
+  //
+  //  PROJECT, REFRESH (FOLDERS): [⌘]+[⌥]+R
+  //  - clobbers sublime default: toggle regex
+  {"keys": ["command+option+r"], "command": "refresh_folder_list"},
+
+
+  //  REVERT/RELOAD FILE:       [⌘]­­­+[⌃]+R
+  {"keys": ["command+control+r"], "command": "revert"},
+
+
+  //  TOGGLE GUTTER:            [⌘]+[⌥]+U
+  {"keys": ["command+option+u"], "command": "toggle_setting", "args": {"setting": "gutter"}},
+  //
+  //  TOGGLE LINE NUMBERS:      [⌘]+[⌥]+L or [⌘]+K, [⌘]+N
+  {"keys": ["command+option+l"],       "command": "toggle_setting", "args": {"setting": "line_numbers"}},
+  {"keys": ["command+k", "command+n"], "command": "toggle_setting", "args": {"setting": "line_numbers"}},
+  //
+  //  TOGGLE SIDE BAR:          [⌘]+[⌥]+S or [⌘]+[Shift]+F12
+  //  - plus default:           [⌘]+K, [⌘]+B
+  {"keys": ["command+option+s"],  "command": "toggle_side_bar"},
+  {"keys": ["command+shift+f12"], "command": "toggle_side_bar"},
+  //
+  //  TOGGLE WORD WRAP:         [⌘]+[⌥]+Y or [⌘]+K, [⌘]+W
+  {"keys": ["command+option+y"],       "command": "toggle_setting", "args": {"setting": "word_wrap"}},
+  {"keys": ["command+k", "command+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"}},
+
+
+  //
+  //  plugin: BRACKET HIGHLIGHTER
+  //
+  //  TOGGLE GLOBAL ENABLE:       [^]+B, [^]+B
+  //  TOGGLE HIGH-VIS:            [^]+B, [^]+[Shift]+B
+  {"keys": ["control+b", "control+b"], "command": "bh_toggle_enable"},
+  {"keys": ["control+b", "control+shift+b"], "command": "bh_toggle_high_visibility"},
+  //
+  //  JUMP TO MATCHING BRACKET:   [^]+B, [^]+M
+  //  GOTO LEFT BRACKET:          [^]+B, [^]+UB
+  //  GOTO RIGHT BRACKET:         [^]+B, [^]+DOWN
+  {"keys": ["control+b", "control+m"], "command": "bh_key", "args": {"plugin": {
+    "args": {"select": "right", "alternate": true}, "command": "bh_modules.bracketselect", "type": ["__all__"]
+    }},
+    "lines": true, "no_outside_adj": null
+  },
+  {"keys": ["control+b", "control+up"], "command": "bh_key", "args": {
+    "no_outside_adj": null, "no_block_mode": null, "lines" : true, "plugin": {
+      "type": ["__all__"], "command": "bh_modules.bracketselect", "args": {"select": "left"}
+  }}},
+  {"keys": ["control+b", "control+down"], "command": "bh_key", "args": {
+    "no_outside_adj": null, "no_block_mode": null, "lines" : true, "plugin": {
+      "type": ["__all__"], "command": "bh_modules.bracketselect", "args": {"select": "right"}
+  }}},
+  //
+  //  SELECT TO LEFT BRACKET:     [^]+B, [^]+[Shift]+UP
+  //  SELECT TO RIGHT BRACKET:    [^]+B, [^]+[Shift]+DOWN
+  {"keys": ["control+b", "control+shift+up"], "command": "bh_key", "args": {
+    "no_outside_adj": null, "no_block_mode": null, "lines" : true, "plugin": {
+      "type": ["__all__"], "command": "bh_modules.bracketselect", "args": {"select": "left", "extend": true}
+  }}},
+  {"keys": ["control+b", "control+shift+down"], "command": "bh_key", "args": {
+    "no_outside_adj": null, "no_block_mode": null, "lines" : true, "plugin": {
+      "type": ["__all__"], "command": "bh_modules.bracketselect", "args": {"select": "right", "extend": true}
+  }}},
+  //
+  //  SELECT TEXT BETWEEN BRACKETS:   [^]+B, [^]+S
+  //  SELECT TEXT INCLUDING BRACKETS:   [^]+B, [^]+[Shift]+S
+  {"keys": ["control+b", "control+s"], "command": "bh_key", "args": {
+    "no_outside_adj": null, "lines" : true, "plugin": {"type": ["__all__"], "command": "bh_modules.bracketselect"}
+  }},
+  {"keys": ["control+b", "control+shift+s"], "command": "bh_key", "args": {
+    "no_outside_adj": null, "lines" : true, "plugin": {
+      "type": ["__all__"], "command": "bh_modules.bracketselect", "args": {"always_include_brackets": true}
+  }}},
+  //
+  //  WRAP SELECTION WITH BRACKETS:   [^]+B, [^]+W
+  {"keys": ["control+b", "control+w"], "command": "wrap_brackets"},
+
+  //
+  //  plugin: EXTENDED TAB SWITCHER
+  //
+  //  LIST FILES IN WINDOW:     [⌃]+TAB
+  //  - similar to Intellij
+  //  - and plugin default:     [⌥]+[⌃]+TAB
+  //  LIST FILES IN PANE:       [⌃]+[Shift]+TAB
+  //  - and plugin default:     [⌥]+[⌃]+[Shift]+TAB
+  {"keys": ["control+tab"], "command": "extended_switcher", "args": {"list_mode": "window"}},
+  {"keys": ["shift+control+tab"], "command": "extended_switcher", "args": {"list_mode": "active_group"}},
+
+  //
+  //  plugin: FILTER LINES
+  //
+  //  custom key mappings:
+  //  - EXCLUDE LINES W REGEX:  [⌘]+K, [⌘]+[Shift]+R
+  //  - EXCLUDE LINES W STRING: [⌘]+K, [⌘]+[Shift]+S
+  {"keys": ["command+k", "command+shift+r"], "command": "prompt_filter_to_lines", "args": {"invert_search": true, "search_type": "regex"}},
+  {"keys": ["command+k", "command+shift+s"], "command": "prompt_filter_to_lines", "args": {"invert_search": true, "search_type": "string"}},
+  //
+  //  and plugin defaults:
+  //  - KEEP LINES WITH REGEX:  [⌘]+K, [⌘]+R
+  //  - KEEP LINES WITH STRING: [⌘]+K, [⌘]+S
+
+  //
+  //  plugin: GIT GUTTER
+  //
+  //  custom key mappings:
+  //  - NEXT/PREVCHANGE:      F7 / [Shift]+F7
+  //  - REVERT CHANGE:          [⌘]+[⌥]+F7
+  //  - DIFF POPUP:             [^]+F7
+  {"keys": ["f7"], "command": "git_gutter_next_change"},
+  {"keys": ["shift+f7"], "command": "git_gutter_prev_change"},
+  {"keys": ["command+option+f7"], "command": "git_gutter_revert_change"},
+  {"keys": ["control+f7"], "command": "git_gutter_diff_popup"},
+  //
+  //  and plugin defaults:
+  //  - COPY FROM COMMIT:       [⌘]+[Shift]+C
+  //  - NEXT/PREV CHANGE:       [⌘]+[⌥]+[Shift]+J / [⌘]+[⌥]+[Shift]+K
+  //  - REVERT CHANGE:          [⌘]+[⌥]+[Shift]+Z
+  //  - BLAME:                  [⌘]+[⌥]+[Shift]+C, [⌘]+B
+  //  - DIFF POPUP:             [⌘]+[⌥]+[Shift]+C, [⌘]+D
+  //  - SHOW COMPARE:           [⌘]+[⌥]+[Shift]+C, V
+  //  - COMPARE HEAD:           [⌘]+[⌥]+[Shift]+C, H
+  //  - COMPARE ORIGIN:         [⌘]+[⌥]+[Shift]+C, O
+  //  - COMPARE COMMIT:         [⌘]+[⌥]+[Shift]+C, C
+  //  - COMPARE FILE COMMIT:    [⌘]+[⌥]+[Shift]+C, F
+  //  - COMPARE BRANCH:         [⌘]+[⌥]+[Shift]+C, B
+  //  - COMPARE TAG:            [⌘]+[⌥]+[Shift]+C, T
+
+  //
+  // plugin: MARKDOWN PREVIEW
+  //
+  //  PREVIEW IN BROWSER:       [⌘]+F12
+  {"keys": ["super+f12"], "command": "markdown_preview_select", "args": {"target": "browser"}},
+
+  //
+  //  plugin: OPEN
+  //
+  //  plugin default:
+  //  - OPEN/BROWSE FILES:      [⌘]+[Shift]+O
+
+  //
+  //  plugin: ORIGAMI
+  //
+  //  plugin defaults:
+  //  - FOCUS ON PANE ABOVE:      [⌘]+K, UP               | DOWN | LEFT | RIGHT
+  //  - MOVE FILE TO PANE ABOVE:  [⌘]+K, [Shift]+UP       | DOWN | LEFT | RIGHT
+  //  - CLONE FILE TO PANE ABOVE: [⌘]+K, [⌥]+UP           | DOWN | LEFT | RIGHT
+  //  - CREATE PANE ABOVE:        [⌘]+K, [⌥]+UP           | DOWN | LEFT | RIGHT
+  //  - DESTROY PANE ABOVE:       [⌘]+K, [⌥]+[Shift]+UP   | DOWN | LEFT | RIGHT
+  //  - CREATE PANE ABOVE˚:       [⌘]+K, [⌥]+UP           | DOWN | LEFT | RIGHT
+  //
+  //  disable noisy, never used plugin defaults:
+  { "keys": ["super+k", "super+alt+up"], "command": "noop" },
+  { "keys": ["super+k", "super+alt+right"], "command": "noop" },
+  { "keys": ["super+k", "super+alt+down"], "command": "noop" },
+  { "keys": ["super+k", "super+alt+left"], "command": "noop" },
+
+  //
+  //  plugin: PREFERENCES HELPER
+  //
+  //  plugin defaults:
+  //  - LIST SETTING FILES:               [⌘]+[Shift]+COMMA
+  //  - FILL SETTING WITH DEFAULT VALUE:  [⌘]+[Shift]+SEMICOLON
+  //  - TOGGLE DEFAULT & USER PREFS:      [⌘]+[⌥]+UP
+
+  //
+  //  plugin: SCHEMR
+  //
+  //  plugin defaults:
+  //  - LIST FAV SCHEMES:       [⌥]+[Shift]+F5
+  //  - NEXT/PREV FAV SCHEME:   [⌥]+[Shift]+F8 / [⌥]+[Shift]+F7
+  //  - RANDOM FAV SCHEME:      [⌥]+[Shift]+F10
+  //  - LIST ALL SCHEMES:       [⌥]+F5
+  //  - NEXT/PREV SCHEME:       [⌥]+F7 / [⌥]+F8
+  //  - RANDOM SCHEME:          [⌥]+F10
+  
+  //
+  //  plugin: SIDEBAR ENHANCEMENTS
+  //
+  //  FILE, MOVE:               F6
+  //  - clobbers built-in: toggle spell check
+  {"keys": ["f6"], "command": "side_bar_move"},
+  //
+  //  FILE, DUPLICATE:          F5
+  //  - clobbers built-in: sort
+  {"keys": ["f5"], "command": "side_bar_duplicate"},
+  //
+  //  FILE, RENAME:             [Shift]­­­+F6
+  {"keys": ["shift+f6"], "command": "side_bar_rename"},
+  //
+  //  FIND IN PATHS:            [⌥]+O
+  {"keys": ["option+o"], "id": "side-bar-find-files", "command": "side_bar_find_files_path_containing"},
+  //
+  //  plugin default disabled to avoid confusion w markdown preview:
+  //  - OPEN IN BROWSER:      F12
+  // {"keys": ["f12"], "command": "side_bar_open_in_browser", "args": {"browser": "chrome"}},
+
+  //
+  //  plugin: SUBLIME BOOKMARKS
+  //
+  //  BOOKMARK, TOGGLE:         [⌘]+F3
+  //  - clobbers built-in key defined above
+  //  - clobbers built-in defaults: [⌘]+F2 or [⌃]+[Shift]+R
+  //  - plus plugin defaults:   [^]+F2
+  {"keys": ["super+f3"], "command": "sublime_bookmark", "args": {"type": "toggle_line" }},
+  {"keys": ["super+f2"], "command": "sublime_bookmark", "args": {"type": "toggle_line" }},
+  {"keys": ["control+shift+r"], "command": "sublime_bookmark", "args": {"type": "toggle_line" }},
+  {"keys": ["control+f2"], "command": "sublime_bookmark", "args": {"type": "toggle_line" }},
+  //
+  //  BOOKMARK, ADD [named]:    [⌥]+F3
+  {"keys": ["option+f3"], "command": "sublime_bookmark", "args": {"type": "add" }},
+  //
+  //  BOOKMARKS, NEXT/PREV:     F3 / [Shift]+F3
+  //  - clobbers built-in keys defined above`
+  //  - clobbers built-in defaults: F2 or [⌃]+R / Shift-F2
+  //  - plugin defaults are also: F2 / Shift-2
+  {"keys": ["f3"], "command": "sublime_bookmark", "args": {"type": "goto_next"}},
+  {"keys": ["shift+f3"], "command": "sublime_bookmark", "args": {"type": "goto_previous"}},
+  {"keys": ["f2"], "command": "sublime_bookmark", "args": {"type": "goto_next"}},
+  {"keys": ["shift+f2"], "command": "sublime_bookmark", "args": {"type": "goto_previous"}},
+  {"keys": ["control+r"], "command": "sublime_bookmark", "args": {"type": "goto_next"}},
+  //
+  //  BOOKMARKS, VIEW ALL:      [⌘]+[Shift]+F3
+  // {"keys": ["command+shift+f3"], "command": "sublime_bookmark", "args": {"type": "view_bookmarks???"}},
+  //
+  //  BOOKMARKS, CLEAR ALL:      [⌘]+[^]+F3
+  //  - plus builtin default:   [⌘]+[Shift]+F2
+  {"keys": ["command+control+f3"], "command": "sublime_bookmark", "args": {"type": "clear_bookmarks"}},
+  {"keys": ["command+shift+f2"], "command": "sublime_bookmark", "args": {"type": "clear_bookmarks"}},
+  //
+  // // in addition to overriding the OOTB bookmark keys, add [⌘]B sequences
+  // , {"keys": ["command+b"], "command": "noop"}  // have to turn [⌘]B off so it can be a combo prefix
+  // // [⌘]B, [⌘]B   toggle bookmark
+  // // [⌘]B, [⌘]N   next bookmark
+  // // [⌘]B, [⌘]P   previous bookmark
+  // // [⌘]B, [⌘]B   goto bookmark
+
+  //
+  //  plugin: TEXT PASTRY
+  //
+  //  plugin defaults:
+  //   { "keys": ["super+alt+n"], "command": "text_pastry_show_command_line", "args": { "text": "" } },
+  //   { "keys": ["super+alt+t"], "command": "text_pastry_show_menu" },
+  //   { "keys": ["super+alt+b"], "command": "text_pastry_redo" },
+  //  plugin defaults:
+  //  - SHOW MENU:              [⌘]+[⌥]+T
+  //  - SHOW COMMAND LINE:      [⌘]+[⌥]+N
+  //  - REDO:                   [⌘]+[⌥]+B     
+  //
+  //  plugin: THEMR
+  //
+  //  plugin defaults:
+  //  - NEXT/PREV FAV THEME:    [⌘]+[Shift]+F8 / [⌘]+[Shift]+F7
+  //  - RANDOM FAV THEME:       [⌘]+[Shift]+F10
+  //  - LIST ALL THEMES:        [⌥]+F5
+  //  - NEXT/PREV THEME:        [⌘]+F7 / [⌘]+F8
+  //  - RANDOM THEME:           [⌘]+F10
+]
+
+//  ECLIPSE
+//
+// eclipse doesn't have an actual "find next instance of last search", but rather [⌘]+G finds next instance of
+// selected text. Its [⌘]+OPTION+G is "find all text in workspace". To emulate this as closely as possible, we would
+// swap [⌘]+G and [⌘]+OPTION+G to be FIND-UNDER and FIND-NEXT; but we won't because Sublime's native behavior matches
+//  Intellij.
+//
+// //  FIND UNDER: [⌘]+G
+// //  - sublime default: find_next
+// , {"keys": ["command+g"], "command": "find_under"}
+
+// //  FIND NEXT: [⌘]+[⌥]+G
+// //  - sublime default: find_under
+// , {"keys": ["command+option+g"], "command": "find_next"}
+

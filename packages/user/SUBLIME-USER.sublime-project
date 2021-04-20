@@ -1,0 +1,41 @@
+{
+	"settings":
+	{
+		"color_scheme": "Packages/Dayle Rees Color Schemes/legacy/Contrast/Earthsong.tmTheme",
+		"binary_file_patterns": ["*.cache", "*.ldb"],
+		"follow_symlinks": true,
+	},
+	"folders":
+	[
+		{
+			"name": "$SUBLIME/Packages/User",
+			"path": "~/Library/Application Support/Sublime Text 3/Packages/User",
+			"folder_exclude_patterns": ["User"],
+			"file_exclude_patterns": ["*.user-ca-bundle"],
+		},
+		{
+			"name": "$SUBLIME/Packages",
+			"path": "~/Library/Application Support/Sublime Text 3/Packages",
+			"folder_exclude_patterns": ["User"],
+			"file_exclude_patterns": [
+				".extracted-sublime-package",
+				".gitignore",
+				"LICENSE", "LICENSE.*",
+				"package-metadata.json",
+			],
+		},
+		{
+			"name": "$SUBLIME",
+			"path": "~/Library/Application Support/Sublime Text 3",
+			"folder_exclude_patterns": [
+				"Cache",
+				"Index",
+				"Lib",
+				"Packages",
+				".sublime",
+			],
+			"file_exclude_patterns": ["*.sublime_license"],
+		},
+	]
+}
+

@@ -1,0 +1,24 @@
+{
+    // Files or directories to be shown at the begining
+    "bookmarks": ["~",
+      "~/git/P-Infra-Common-Libs",
+      "~/git/P-Infra-USDCA",
+      "~/Library/Application Support/Sublime Text 3/Packages",
+    ],
+
+    // Bookmark identifier in the first panel. Can be "%d" to enumerate them
+    "bookmark_prefix": "»",
+
+    // List the directory of the currentl file (tab)
+    "list_current_dir": true,
+
+    // Ignore regex patters
+    "filter_regex": [
+      "\\.DS_Store", "Icon\\W",
+      // "^.+\\.iml$",
+      // "^.idea$", 
+      "^\\.?mvn(w|\\.\\w+)?$",
+      // "^target$",
+    ],
+}
+

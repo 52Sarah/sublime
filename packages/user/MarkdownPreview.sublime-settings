@@ -1,0 +1,35 @@
+/*
+    Markdown Preview default settings - USER
+*/
+{
+    /*
+        Sets the parser used for building markdown to HTML.
+
+        NOTE: The parser setting is not for the preview commands.
+        The previews have separate commands for each parser markdown.
+
+        Warning for github API: if you have a ST2 linux build, Python is not built with SSL so it may not work
+
+        default - The current default parser is python-markdown parser.
+        markdown - Use the built-in python-markdown parser
+        github - Use the github API to convert markdown, so you can use GitHub flavored Markdown, see https://help.github.com/articles/github-flavored-markdown/
+        gitlab - Use the gitlab API to convert markdown, so you can use GitLab flavored Markdown, see https://docs.gitlab.com/ee/user/markdown.html
+    */
+    "parser": "github",
+
+    /*
+        Enabled parsers for the parser "select parser" command
+        Available parsers: markdown, github, gitlab
+
+        When there are more than one parser in the list, Sublime will prompt
+        via the quick panel for which one to use.  If there is only one, it
+        will automatically run that parser.
+    */
+    "enabled_parsers": ["github"],
+
+    /*
+        Sets the supported filetypes for auto-reload on save; defaults: mr, markdown, mdown
+    */
+    "markdown_filetypes": [".md"],
+
+}
