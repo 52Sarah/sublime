@@ -37,7 +37,12 @@
         "open": "(\")",
         "close": "(\")",
         "style": "double_quote",
-        "scopes": ["string.quoted.double"],
+        "scopes": [
+            "string.quoted.double.filter",
+            "string.quoted.single.filter",
+            "braces.filter",
+            "parens.filter"
+        ],
         "language_filter": "allowlist",
         "language_list": ["Gmail Filters"],
         "sub_bracket_search": "true",

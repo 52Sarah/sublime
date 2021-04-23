@@ -1,0 +1,5 @@
+Package Control.user-ca-bundle
+*.cache
+*.sublime-package
+*.sublime-package.zip
+

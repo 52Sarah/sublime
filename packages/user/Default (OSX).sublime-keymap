@@ -93,8 +93,12 @@
 
 
   //  MULTI-CURSOR:             [^]+G
-  //  - sublime default remapped to delete-right: [⌃]+D (not sure where)
+  //  - sublime default [⌘]+D remapped to delete line
   {"keys": ["control+g"], "command": "find_under_expand"},
+  //
+  //  MULTI-CURSOR SKIP:        [⌘]+, [^]+G
+  //  - sublime default [⌘]+K, [⌘]+D mapped to FileDiffs Menu
+  {"keys": ["super+k", "control+g"], "command": "find_under_expand_skip"},
 
 
   //  PROJECT, EDIT:            [⌘]­­­+[⌥]+COMMA
@@ -135,8 +139,8 @@
   {"keys": ["control+b", "control+shift+b"], "command": "bh_toggle_high_visibility"},
   //
   //  JUMP TO MATCHING BRACKET:   [^]+B, [^]+M
-  //  GOTO LEFT BRACKET:          [^]+B, [^]+UB
-  //  GOTO RIGHT BRACKET:         [^]+B, [^]+DOWN
+  //  JUMP TO LEFT BRACKET:       [^]+B, [^]+UP
+  //  JUMP TO RIGHT BRACKET:      [^]+B, [^]+DOWN
   {"keys": ["control+b", "control+m"], "command": "bh_key", "args": {"plugin": {
     "args": {"select": "right", "alternate": true}, "command": "bh_modules.bracketselect", "type": ["__all__"]
     }},
@@ -187,11 +191,17 @@
   {"keys": ["shift+control+tab"], "command": "extended_switcher", "args": {"list_mode": "active_group"}},
 
   //
+  //  plugin: FILE DIFFS
+  //
+  //  DIFF MENU:                [⌘]+K, [⌘]+D
+  //  - clobbers sublime default: multi-cursor skip
+  {"keys": ["super+k", "super+d"], "command": "file_diff_menu"},
+ 
+  //
   //  plugin: FILTER LINES
   //
-  //  custom key mappings:
-  //  - EXCLUDE LINES W REGEX:  [⌘]+K, [⌘]+[Shift]+R
-  //  - EXCLUDE LINES W STRING: [⌘]+K, [⌘]+[Shift]+S
+  //  EXCLUDE LINES W REGEX:    [⌘]+K, [⌘]+[Shift]+R
+  //  EXCLUDE LINES W STRING:   [⌘]+K, [⌘]+[Shift]+S
   {"keys": ["command+k", "command+shift+r"], "command": "prompt_filter_to_lines", "args": {"invert_search": true, "search_type": "regex"}},
   {"keys": ["command+k", "command+shift+s"], "command": "prompt_filter_to_lines", "args": {"invert_search": true, "search_type": "string"}},
   //
@@ -202,10 +212,9 @@
   //
   //  plugin: GIT GUTTER
   //
-  //  custom key mappings:
-  //  - NEXT/PREVCHANGE:      F7 / [Shift]+F7
-  //  - REVERT CHANGE:          [⌘]+[⌥]+F7
-  //  - DIFF POPUP:             [^]+F7
+  //  NEXT/PREVCHANGE:          F7 / [Shift]+F7
+  //  REVERT CHANGE:            [⌘]+[⌥]+F7
+  //  DIFF POPUP:                 [^]+F7
   {"keys": ["f7"], "command": "git_gutter_next_change"},
   {"keys": ["shift+f7"], "command": "git_gutter_prev_change"},
   {"keys": ["command+option+f7"], "command": "git_gutter_revert_change"},
@@ -226,9 +235,9 @@
   //  - COMPARE TAG:            [⌘]+[⌥]+[Shift]+C, T
 
   //
-  // plugin: MARKDOWN PREVIEW
+  //  plugin: MARKDOWN PREVIEW
   //
-  //  PREVIEW IN BROWSER:       [⌘]+F12
+   // PREVIEW IN BROWSER:       [⌘]+F12
   {"keys": ["super+f12"], "command": "markdown_preview_select", "args": {"target": "browser"}},
 
   //
@@ -249,10 +258,10 @@
   //  - CREATE PANE ABOVE˚:       [⌘]+K, [⌥]+UP           | DOWN | LEFT | RIGHT
   //
   //  disable noisy, never used plugin defaults:
-  { "keys": ["super+k", "super+alt+up"], "command": "noop" },
-  { "keys": ["super+k", "super+alt+right"], "command": "noop" },
-  { "keys": ["super+k", "super+alt+down"], "command": "noop" },
-  { "keys": ["super+k", "super+alt+left"], "command": "noop" },
+  { "keys": ["super+k", "super+option+up"], "command": "noop" },
+  { "keys": ["super+k", "super+option+right"], "command": "noop" },
+  { "keys": ["super+k", "super+option+down"], "command": "noop" },
+  { "keys": ["super+k", "super+option+left"], "command": "noop" },
 
   //
   //  plugin: PREFERENCES HELPER
@@ -338,9 +347,9 @@
   //  plugin: TEXT PASTRY
   //
   //  plugin defaults:
-  //   { "keys": ["super+alt+n"], "command": "text_pastry_show_command_line", "args": { "text": "" } },
-  //   { "keys": ["super+alt+t"], "command": "text_pastry_show_menu" },
-  //   { "keys": ["super+alt+b"], "command": "text_pastry_redo" },
+  //   { "keys": ["super+option+n"], "command": "text_pastry_show_command_line", "args": { "text": "" } },
+  //   { "keys": ["super+option+t"], "command": "text_pastry_show_menu" },
+  //   { "keys": ["super+option+b"], "command": "text_pastry_redo" },
   //  plugin defaults:
   //  - SHOW MENU:              [⌘]+[⌥]+T
   //  - SHOW COMMAND LINE:      [⌘]+[⌥]+N

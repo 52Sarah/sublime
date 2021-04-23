@@ -16,11 +16,15 @@
 		"BeyondCompare",
 		"BlackBird-ColorScheme",
 		"BracketHighlighter",
+		"Color Highlight",
+		"Color Scheme - Vintage Terminal",
 		"ColorSchemeEditor",
+		"Darkula Color Scheme",
 		"Dayle Rees Color Schemes",
 		"DictionaryAutoComplete",
 		"Dockerfile Syntax Highlighting",
 		"ExtendedTabSwitcher",
+		"FileDiffs",
 		"FileIcons",
 		"Filter Lines",
 		"GitGutter",
@@ -40,6 +44,7 @@
 		"Preference Helper",
 		"ReadmePlease",
 		"Schemr",
+		"ScopeHunter",
 		"SideBarEnhancements",
 		"Sublime Bookmarks",
 		"SyncedSideBar",
@@ -47,6 +52,7 @@
 		"Theme - Phoenix",
 		"Tomorrow Color Schemes",
 		"Trimmer",
-		"View Bookmarks"
+		"View Bookmarks",
+		"Visual Studio Dark"
 	]
 }

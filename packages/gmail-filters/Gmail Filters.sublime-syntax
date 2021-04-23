@@ -15,11 +15,6 @@ variables:
   #  2: namespace prefix colon
   #  3: local tag name
   qualified_name: '(?:([[:alpha:]_][[:alnum:]_.-]*)(:))?([[:alpha:]_][[:alnum:]_.-]*)'
-  #
-  # Bold the 999x__SNAKE_CASE "names" for each filter.
-  filter_name: '[A-Z]?\d{2,3}[a-z]*_+[[:alnum:]_]+'
-  #
-  operator_only: '((-?)(FROM|TO|SUBJECT|LIST)(:))'
     
 contexts:
   main:
@@ -48,8 +43,7 @@ contexts:
         - match: '-->'
           scope: punctuation.definition.comment.end
           pop: true
-        - match: '{{filter_name}}'
-          scope: entity.name.section
+        - include: filter-name
         - match: '-{2,}'
           scope: invalid.illegal.double-hyphen-within-comment
 
@@ -90,7 +84,7 @@ contexts:
         10: string.quoted.single
         11: entity.name.type
       push:
-        - meta_scope: meta.tag.property
+        - meta_scope: meta.tag.property.filter.label
         - match: /?>
           scope: punctuation.definition.tag_.end
           pop: true
@@ -120,8 +114,114 @@ contexts:
       captures:
         1: invalid.illegal.bad-attribute-name
         2: punctuation.separator.key-value
+    - include: single-quoted-string-filter
     - include: single-quoted-string
     - include: double-quoted-string
+
+
+  single-quoted-string-filter:
+     - match: "(?<='hasTheWord' value=)'"
+       scope: punctuation.definition.string.begin
+       push:
+        - meta_scope: string.quoted.single.filter
+        - match: "'"
+          scope: punctuation.definition.string.end
+          pop: true
+        - include: recursive-items
+
+  # Bold the 999x__SNAKE_CASE "names" for each filter.
+  filter-name:
+    - match: '[A-Z]?\d{2,3}[a-z]*_+\w+'
+      scope: .filter_name
+  
+  recursive-grouped-items:
+    - include: parens-filter
+    - include: braces-filter
+    - include: double-quoted-string-filter
+    - include: unquoted-word
+
+  recursive-keyword-items:
+    - include: keyword-and-value
+    - include: keyword-only
+    - include: conjunction-only
+  
+  recursive-items:
+    - include: recursive-keyword-items
+    - include: recursive-grouped-items
+
+
+  # keyword-and-value:
+  #   - match: '(\-?)(LABEL|IN|IS|BEFORE|AFTER|SIZE|LIST)(:)(?=\S+)'
+  #     scope: .keyword_and_value
+  #     captures:
+  #       1: punctuation.separator
+  #       2: keyword entity.name.type
+  #       3: punctuation.separator
+  #   - include: recursive-grouped-items
+
+  keyword-and-value:
+    - match: '(\-?)(LABEL|IN|IS|BEFORE|AFTER|SIZE|LIST)(:)(?=\S+)'
+      scope: .keyword_and_value
+      captures:
+        1: punctuation.separator
+        2: keyword entity.name.type
+        3: punctuation.separator
+    - include: value-only
+    - include: recursive-grouped-items
+
+  keyword-only:
+    - match: '(\-?)(FROM|TO|SUBJECT)(:)'
+      scope: .keyword_only
+      captures:
+        1: punctuation.separator
+        2: keyword entity.name.type
+        3: punctuation.separator
+
+  value-only:
+    - match: '(?<=\:)([\w_./]*)'
+      scope: .value_only entity.name.type
+
+  conjunction-only:
+    - match: '[\(\{\s]\s*(AND|OR|AROUND)\s*[\)\}\s]'
+      scope: .conjunction_only keyword
+
+  double-quoted-string-filter:
+    - match: '"'
+      scope: punctuation.definition.string.begin
+      push:
+        - meta_scope: string.quoted.double.filter
+        - match: '"'
+          scope: punctuation.definition.string.end
+          pop: true
+        - include: parens-filter
+        - include: braces-filter
+        - include: conjunction-only
+
+  braces-filter:
+    - match: '\{'
+      scope: punctuation.definition.brace.begin
+      push:
+        - meta_scope: braces.filter
+        - match: '\}'
+          scope: punctuation.definition.brace.end
+          pop: true
+        - include: filter-name
+        - include: recursive-items
+
+  parens-filter:
+    - match: '\('
+      scope: punctuation.definition.paren.begin
+      push:
+        - meta_scope: parens.filter
+        - match: '\)'
+          scope: punctuation.definition.paren.end
+          pop: true
+        - include: recursive-items
+
+  unquoted-word:
+    - match: '(?<=[^"''\w])[\w_./]+(?=[^:"''\w])'
+      scope: .unquoted_word
+
 
   single-quoted-string:
     - match: "'"
@@ -131,31 +231,6 @@ contexts:
         - match: "'"
           scope: punctuation.definition.string.end
           pop: true
-        - match: '{{filter_name}}'
-          scope: entity.name.type
-        - match: '((-?)(LABEL|IN|IS|BEFORE|AFTER|SIZE)(:)(?:(?:(?:\{)(.+)(?:\})|(?:\()(.+)(?:\))|(?:")(.+)(?:")|([[:alnum:]#/\-]+)(?=[\s\n\)\}"]))))'
-          captures:
-            1: .operator_and_value
-            2: punctuation.separator
-            3: keyword entity.name.type
-            4: punctuation.separator
-            5: entity.name.type
-            6: entity.name.type
-            7: entity.name.type
-            8: entity.name.type
-        - match: '{{operator_only}}'
-          captures:
-            1: .operator_only
-            2: punctuation.separator
-            3: keyword entity.name.type
-            4: punctuation.separator
-        - match: 'AND|OR'
-          scope: keyword
-        - include: double-quoted-string
-        - match: '(?<="\s)AROUND(?=\s+")'
-          scope: keyword
-        - match: '(?<!"\s)AROUND(?!\s+")'
-          scope: entity.name.type
 
   double-quoted-string:
     - match: '"'

@@ -8,19 +8,34 @@
 	"folders":
 	[
 		{
-			"name": "$SUBLIME/Packages/User",
-			"path": "~/Library/Application Support/Sublime Text 3/Packages/User",
-			"folder_exclude_patterns": ["User"],
+			"name": "SUBLIME-PACKAGES",
+			"path": ".",
+			"folder_exclude_patterns": ["packages"],
 			"file_exclude_patterns": ["*.user-ca-bundle"],
+		},
+		{
+			"name": "User",
+			"path": "./packages/user",
+		},
+		{
+			"name": "gmail-filters",
+			"path": "./packages/gmail-filters",
+		},
+		{
+			"name": "sublime-keymap",
+			"path": "./packages/sublime-keymap",
 		},
 		{
 			"name": "$SUBLIME/Packages",
 			"path": "~/Library/Application Support/Sublime Text 3/Packages",
-			"folder_exclude_patterns": ["User"],
+			"folder_exclude_patterns": [
+				"User",
+				"Gmail Filters",
+				"Sublime Keymap",
+				"py*"
+			],
 			"file_exclude_patterns": [
 				".extracted-sublime-package",
-				".gitignore",
-				"LICENSE", "LICENSE.*",
 				"package-metadata.json",
 			],
 		},
@@ -28,13 +43,17 @@
 			"name": "$SUBLIME",
 			"path": "~/Library/Application Support/Sublime Text 3",
 			"folder_exclude_patterns": [
+				".gitignore",
+				".sublime",
 				"Cache",
 				"Index",
 				"Lib",
-				"Packages",
-				".sublime",
+				"Packages"
 			],
-			"file_exclude_patterns": ["*.sublime_license"],
+			"file_exclude_patterns": [
+				".gitignore",
+				"LICENSE", "LICENSE.*", "*.sublime_license",
+			],
 		},
 	]
 }
