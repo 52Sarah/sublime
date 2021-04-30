@@ -50,7 +50,7 @@ contexts:
       scope: 'comment.line.double-slash.js'
       captures:
         1: punctuation.definition.comment.json
-        2: 'source.json.sublime.keymap.section'
+        2: entity.name.function
     - match: (//).*$\n?
       scope: comment.line.double-slash.js
       captures:

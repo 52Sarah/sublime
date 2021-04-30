@@ -30,6 +30,6 @@
     /*
         Sets the supported filetypes for auto-reload on save; defaults: mr, markdown, mdown
     */
-    "markdown_filetypes": [".md"],
+    "markdown_filetypes": [".md", ".mmd"],
 
 }

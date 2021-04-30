@@ -54,15 +54,58 @@
 			},
 			"key": "1bd7ee1ce72751da4e64129f6d32db41",
 			"label": "\\i"
+		},
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "\\i(B,Z)",
+					"threshold": 3
+				},
+				"command": "text_pastry_insert_text",
+				"text": "\\i(B,Z)"
+			},
+			"key": "f48cc008865ed0a9a0cad5e6019fc931",
+			"label": "\\i(B,Z)"
+		},
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "\\i(B,G)",
+					"threshold": 3
+				},
+				"command": "text_pastry_insert_text",
+				"text": "\\i(B,G)"
+			},
+			"key": "2474be561bf9850935c9db66da2a9d2d",
+			"label": "\\i(B,G)"
+		},
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "\\i(B,A)",
+					"threshold": 3
+				},
+				"command": "text_pastry_insert_text",
+				"text": "\\i(B,A)"
+			},
+			"key": "8bac30578aa37bf7518545511d54807b",
+			"label": "\\i(B,A)"
 		}
 	],
 	"last_command":
 	{
 		"args":
 		{
-			"text": "1"
+			"text": "\\i(B,A)",
+			"threshold": 3
 		},
-		"command": "text_pastry_step",
-		"text": "\\i"
+		"command": "text_pastry_insert_text",
+		"text": "\\i(B,A)"
 	}
 }

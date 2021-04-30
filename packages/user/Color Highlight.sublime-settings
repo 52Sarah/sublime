@@ -1,0 +1,6 @@
+// Mostly only user overrides included here; defaults prefixed with //!
+{
+  "default": {
+    "named_values": false
+  }
+}
