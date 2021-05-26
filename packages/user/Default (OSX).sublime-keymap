@@ -147,16 +147,20 @@
   {"keys":["ctrl+b", "ctrl+shift+b"], "command":"bh_toggle_high_visibility"},
   //
   //  JUMP TO MATCHING BRACKET:   [^]+B, [^]+M
-  //  JUMP TO LEFT BRACKET:       [^]+B, [^]+UP
-  //  JUMP TO RIGHT BRACKET:      [^]+B, [^]+DOWN
+  //  JUMP TO LEFT BRACKET:       [^]+B, [^]+UP or [^]+B, [^]+LEFT
+  //  JUMP TO RIGHT BRACKET:      [^]+B, [^]+DOWN or [^]+B, [^]+RIGHT
   {"keys":["ctrl+b", "ctrl+m"], "command":"bh_key", "args":{"plugin":{"args":{"select":"right", "alternate":true}, "command":"bh_modules.bracketselect", "type":["__all__"]}}, "lines":true, "no_outside_adj":null},
   {"keys":["ctrl+b", "ctrl+up"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
+  {"keys":["ctrl+b", "ctrl+left"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
   {"keys":["ctrl+b", "ctrl+down"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right"}}}},
+  {"keys":["ctrl+b", "ctrl+right"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right"}}}},
   //
-  //  SELECT TO LEFT BRACKET:     [^]+B, [^]+[Shift]+UP
-  //  SELECT TO RIGHT BRACKET:    [^]+B, [^]+[Shift]+DOWN
+  //  SELECT TO LEFT BRACKET:     [^]+B, [^]+[Shift]+UP or [^]+B, [^]+[Shift]+LEFT
+  //  SELECT TO RIGHT BRACKET:    [^]+B, [^]+[Shift]+DOWN or [^]+B, [^]+[Shift]+RIGHT
   {"keys":["ctrl+b", "ctrl+shift+up"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+left"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
   {"keys":["ctrl+b", "ctrl+shift+down"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right", "extend":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+right"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right", "extend":true}}}},
   //
   //  SELECT TEXT BETWEEN BRACKETS:   [^]+B, [^]+S
   //  SELECT TEXT INCLUDING BRACKETS: [^]+B, [^]+[Shift]+S
@@ -194,8 +198,8 @@
   //
   //  EXCLUDE LINES W REGEX:        [⌘]+K, [⌘]+[Shift]+R
   //  EXCLUDE LINES W STRING:       [⌘]+K, [⌘]+[Shift]+S
-  {"keys":["super+k", "super+shift+r"], "command":"prompt_filter_to_lines", "args":{"invert_search":true, "search_type":"regex"}},
-  {"keys":["super+k", "super+shift+s"], "command":"prompt_filter_to_lines", "args":{"invert_search":true, "search_type":"string"}},
+  {"keys":["super+k", "super+shift+r"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"regex"}},
+  {"keys":["super+k", "super+shift+s"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"string"}},
   //
   //  plus plugin defaults:
   //  - KEEP LINES WITH REGEX:      [⌘]+K, [⌘]+R

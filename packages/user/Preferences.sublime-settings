@@ -44,7 +44,9 @@
 		"*.kmsync",
 		"mvnw",
 		"mvnw.cmd",
-		"*.sublime-workspace"
+		"*.sublime-workspace",
+		".git/HEAD",
+		".git/ORIG_HEAD"
 	],
 	"find_selected_text": true,
 	"folder_exclude_patterns":
