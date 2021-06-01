@@ -68,6 +68,7 @@
   //
   //  GOTO PREV/NEXT LOC:           [⌘]+[ / [⌘]+]
   //  - plus defaults:              [⌃]+MINUS / [⌃]+[Shift]+MINUS
+  //  - clobbers default UNINDENT/INDENT
   {"keys":["super+["], "command":"jump_back"},
   {"keys":["super+]"], "command":"jump_forward"},
   //
@@ -76,10 +77,12 @@
   {"keys":["super+alt+o"], "command":"show_overlay", "args":{"overlay":"goto", "text":"@"}},
 
 
-  //  HIPPIE COMPLETION:            [⌥]+/ or [⌃]+PERIOD
+  //  HIPPIE COMPLETION:            [⌘]+; or[⌥]+/ or [⌃]+.
   //  - plus default:               [⌃]+SPACE
-  {"keys":["ctrl+."], "command":"auto_complete"},
+  {"keys":["super+;"], "command":"auto_complete"},
   {"keys":["alt+/"],  "command":"auto_complete"},
+  {"keys":["ctrl+."], "command":"auto_complete"},
+  {"keys":["ctrl+ "], "command":"auto_complete"},
 
   //  KEY BINDINGS:                 [⌘]+[⌃]+COMMA
   {"keys":["super+ctrl+,"], "command":"edit_settings", "args":{"base_file":"${packages}/Default/Default ($platform).sublime-keymap", "default":"[\n\t$0\n]\n"}},
@@ -131,6 +134,9 @@
   //  - plus default:               [⌘]+K, [⌘]+B
   {"keys":["super+alt+s"],  "command":"toggle_side_bar"},
   {"keys":["super+shift+f12"], "command":"toggle_side_bar"},
+  //
+  //  TOGGLE SPELL CHECK::          [⌘]+K, [⌘]+S
+  {"keys":["super+alt+u"], "command":"toggle_setting", "args":{"setting":"gutter"}},
   //
   //  TOGGLE WORD WRAP:             [⌘]+[⌥]+Y or [⌘]+K, [⌘]+W
   {"keys":["super+alt+y"],       "command":"toggle_setting", "args":{"setting":"word_wrap"}},
@@ -196,10 +202,10 @@
   //
   //  plugin: FILTER LINES
   //
-  //  EXCLUDE LINES W REGEX:        [⌘]+K, [⌘]+[Shift]+R
-  //  EXCLUDE LINES W STRING:       [⌘]+K, [⌘]+[Shift]+S
-  {"keys":["super+k", "super+shift+r"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"regex"}},
-  {"keys":["super+k", "super+shift+s"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"string"}},
+  //  KEEP LINES WITH REGEX:        [⌘]+K, [⌘]+F
+  //  EXCLUDE LINES W REGEX:        [⌘]+K, [⌘]+[Shift]+F
+  {"keys":["super+k", "super+f"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"regex"}},
+  {"keys":["super+k", "super+shift+f"], "command":"prompt_filter_to_lines", "args":{"invert_search":true, "search_type":"regex"}},
   //
   //  plus plugin defaults:
   //  - KEEP LINES WITH REGEX:      [⌘]+K, [⌘]+R
@@ -311,27 +317,23 @@
   //  plugin: SUBLIME BOOKMARKS
   //
   //  BOOKMARK, TOGGLE:             [⌘]+F3
-  {"keys":["super+f3"], "command":"sublime_bookmark", "args":{"type":"toggle_line" }},
-  //  - disable plugin default: [^]+F2
-  {"command":"noop", "keys":["ctrl+f2"]},
-  //
   //  BOOKMARK, ADD [named]:        [⌥]+F3
-  {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
-  //  - disable plugin default: [^]+[Shift]+F2
-  {"command":"noop", "keys":["ctrl+shift+f2"]},
-  //
   //  BOOKMARKS, GOTO BOOKMARK:     [^]+F3
-  {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
-  //
   //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3
+  //  BOOKMARKS, CLEAR ALL:         [⌘]+[^]+F3
+  {"keys":["super+f3"], "command":"sublime_bookmark", "args":{"type":"toggle_line" }},
+  {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
+  {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
   {"keys":["f3"], "command":"sublime_bookmark", "args":{"type":"goto_next"}},
   {"keys":["shift+f3"], "command":"sublime_bookmark", "args":{"type":"goto_previous"}},
-  //  - disable plugin defaults: F2 / [Shift]+F2
-  {"command":"noop", "keys":["f2"]},
-  {"command":"noop", "keys":["shift+f2"]},
-  //
-  //  BOOKMARKS, CLEAR ALL:         [⌘]+[^]+F3
   {"keys":["super+ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"remove_all"}},
+  //
+  //  - disable plugin defaults:
+  // [^]+F2          {"command":"noop", "keys":["ctrl+f2"]},
+  // [^]+[Shift]+F2  {"command":"noop", "keys":["ctrl+shift+f2"]},
+  // F2              {"command":"noop", "keys":["f2"]},
+  // [Shift]+F2      {"command":"noop", "keys":["shift+f2"]},
+  //
   //
   // // in addition to overriding the OOTB bookmark keys, add [⌘]B sequences
   // , {"keys":["super+b"], "command":"noop"}  // have to turn [⌘]B off so it can be a combo prefix
@@ -344,13 +346,13 @@
   //  plugin: TEXT PASTRY
   //
   //  plugin defaults:
-  //   {"keys":["super+alt+t"], "command":"text_pastry_show_menu" },
-  //   {"keys":["super+alt+n"], "command":"text_pastry_show_command_line", "args":{"text":"" } },
-  //   {"keys":["super+alt+b"], "command":"text_pastry_redo" },
-  //  plugin defaults:
   //  - SHOW MENU:                  [⌘]+[⌥]+T
   //  - SHOW COMMAND LINE:          [⌘]+[⌥]+N
   //  - REDO:                       [⌘]+[⌥]+B     
+  //  default key definitions:
+  //   {"keys":["super+alt+t"], "command":"text_pastry_show_menu" },
+  //   {"keys":["super+alt+n"], "command":"text_pastry_show_command_line", "args":{"text":"" } },
+  //   {"keys":["super+alt+b"], "command":"text_pastry_redo" },
   //
   //  plugin: THEMR
   //
@@ -376,4 +378,3 @@
 // //  FIND NEXT: [⌘]+[⌥]+G
 // //  - sublime default: find_under
 // , {"keys":["super+alt+g"], "command":"find_next"}
-

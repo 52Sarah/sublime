@@ -2,7 +2,8 @@
 	"extensions":["mmd", "md"],
   "tab_size": 2, //! 4
 
-  "color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
+  "color_scheme": "Packages/User/color-schemes/MarkdownEditor.tmTheme",
+  // "color_scheme": "Packages/MarkdownEditing/MarkdownEditor.tmTheme",
   // "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
   // "color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Yellow.tmTheme",
 

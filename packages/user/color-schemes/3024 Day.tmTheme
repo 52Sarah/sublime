@@ -5162,6 +5162,72 @@
 				<string>#8A8A8AFF</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_115588FF</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#115588FF</string>
+				<key>foreground</key>
+				<string>#C6C6C6FF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_BBBBBB99</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#BBBBBB99</string>
+				<key>foreground</key>
+				<string>#535353FF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_BBBBBB77</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#BBBBBB77</string>
+				<key>foreground</key>
+				<string>#5B5B5BFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_BBBBCC77</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#BBBBCC77</string>
+				<key>foreground</key>
+				<string>#5B5B5BFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_BBBBC077</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#BBBBC077</string>
+				<key>foreground</key>
+				<string>#5B5B5BFF</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>scope</key>
+			<string>col_BBBBC777</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#BBBBC777</string>
+				<key>foreground</key>
+				<string>#5B5B5BFF</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>14875ac8-6a02-493d-9cfa-1701c764e24b</string>

@@ -12,6 +12,8 @@
 		"jq",
 		"fi"
 	],
+	"auto_complete_cycle": true,
+  "auto_complete": false,
 	"binary_file_patterns":
 	[
 		"*.class",
@@ -30,7 +32,8 @@
 		"*.zip"
 	],
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Theme - Phoenix/Color Scheme/Clouds Midnight.tmTheme",
+	"color_scheme": "Packages/User/color-schemes/Clouds Midnight.tmTheme",
+	"detect_indentation": false,
 	"drag_text": false,
 	"file_exclude_patterns":
 	[
@@ -67,16 +70,18 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Markdown",
-		"Vintage"
+		"Vintage",
 	],
 	"line_numbers": true,
 	"match_brackets_angle": true,
+  "native_tabs": "disabled",
 	"save_on_focus_lost": true,
-	"shift_tab_unindent": true,
-	"show_full_path": false,
+	"shell_environment": false,
+  "shift_tab_unindent": false,
+	"show_full_path": true,
 	"show_tab_close_buttons": false,
+  "tab_completion": false,
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
-	"translate_tabs_to_spaces": true
+	"translate_tabs_to_spaces": true,
 }

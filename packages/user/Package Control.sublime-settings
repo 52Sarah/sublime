@@ -28,6 +28,7 @@
 		"FileIcons",
 		"Filter Lines",
 		"GitGutter",
+		"GitOpenChangedFiles",
 		"Hosts",
 		"Indent XML",
 		"Local History",
@@ -53,6 +54,6 @@
 		"Theme - Phoenix",
 		"Tomorrow Color Schemes",
 		"Trimmer",
-		"Visual Studio Dark"
-	]
+		"Visual Studio Dark",
+	],
 }
