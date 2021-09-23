@@ -12,8 +12,8 @@
 		"jq",
 		"fi"
 	],
+	"auto_complete": false,
 	"auto_complete_cycle": true,
-  "auto_complete": false,
 	"binary_file_patterns":
 	[
 		"*.class",
@@ -65,23 +65,25 @@
 		".vscode"
 	],
 	"font_face": "Hack",
-	"font_size": 15,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"Vintage",
+		"Markdown",
+		"Vintage"
 	],
 	"line_numbers": true,
 	"match_brackets_angle": true,
-  "native_tabs": "disabled",
+	"native_tabs": "disabled",
 	"save_on_focus_lost": true,
 	"shell_environment": false,
-  "shift_tab_unindent": false,
+	"shift_tab_unindent": false,
 	"show_full_path": true,
 	"show_tab_close_buttons": false,
-  "tab_completion": false,
+	"tab_completion": false,
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
+	"update_check": false
 }

@@ -11,9 +11,10 @@
 		{
 			"name": "SUBLIME-PACKAGES",
 			"path": ".",
-			"folder_exclude_patterns": ["packages"],
+			"folder_exclude_patterns": [".git"],
 			"file_exclude_patterns": ["*.user-ca-bundle"],
 		},
+/*
 		{
 			"name": "User",
 			"path": "./packages/user",
@@ -26,6 +27,7 @@
 			"name": "sublime-keymap",
 			"path": "./packages/sublime-keymap",
 		},
+*/
 		{
 			"name": "$SUBLIME/Packages",
 			"path": "~/Library/Application Support/Sublime Text 3/Packages",

@@ -15,20 +15,20 @@
   //  BOOKMARK, TOGGLE:             [⌘]+F3
   //  overriden by plugin
   //  disable defaults: [⌘]+F2 or [⌃]+[Shift]+R
-  {"command":"noop", "keys":["super+f2"]},
-  {"command":"noop", "keys":["ctrl+shift+r"]},
+  {"command":"noop", "keys":["super+f2"]},      // toggle_bookmark
+  {"command":"noop", "keys":["ctrl+shift+r"]},  // toggle_bookmark
   //
   //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3
   //  overriden by plugin
   //  disable defaults: F2 or [⌃]+R / [Shift]-F2
-  {"command":"noop", "keys":["f2"]},
-  {"command":"noop", "keys":["ctrl+r"]},
-  {"command":"noop", "keys":["shift+f2"]},
+  {"command":"noop", "keys":["f2"]},            // next_bookmark
+  {"command":"noop", "keys":["ctrl+r"]},        // next_bookmark
+  {"command":"noop", "keys":["shift+f2"]},      // prev_bookmark
   //
   //  BOOKMARKS, CLEAR:             [⌘]+[^]+F3
   //  overriden by plugin
   //  disable default: [⌘]+[Shift]+F2
-  {"command":"noop", "keys":["super+shift+f2"]},
+  {"command":"noop", "keys":["super+shift+f2"]},  // clear_bookmarks
 
 
   //  COMMAND PALETTE:              [⌘]+[Shift]+A
@@ -117,6 +117,9 @@
   //  PROJECT, REFRESH (FOLDERS):   [⌘]+[⌥]+R
   //  - clobbers default: TOGGLE REGEX
   {"keys":["super+alt+r"], "command":"refresh_folder_list"},
+  //
+  //  PROJECT, CLOSE:                [⌘]­­­+K, [⌘]­­­+[Shift]+W
+  {"keys":["super+k", "super+shift+w"], "command":"close_workspace"},
 
 
   //  REVERT/RELOAD FILE:           [⌘]­­­+[⌃]+R
@@ -176,6 +179,7 @@
   //  WRAP SELECTION WITH BRACKETS:   [^]+B, [^]+W
   {"keys":["ctrl+b", "ctrl+w"], "command":"wrap_brackets"},
 
+
   ////////////////////////////////////////////////////////////
   //
   //  plugin: EXTENDED TAB SWITCHER
@@ -187,8 +191,9 @@
   {"keys":["shift+ctrl+tab"], "command":"extended_switcher", "args":{"list_mode":"active_group"}},
   //
   //  plus plugin defaults:
-  //  - LIST FILES IN WINDOW:       [⌥]+[⌃]+TAB
-  //  - LIST FILES IN PANE:         [⌥]+[⌃]+[Shift]+TAB
+  //  LIST FILES IN WINDOW:       [⌥]+[⌃]+TAB
+  //  LIST FILES IN PANE:         [⌥]+[⌃]+[Shift]+TAB
+
 
   ////////////////////////////////////////////////////////////
   //
@@ -198,6 +203,19 @@
   //  - clobbers default: MULTI-CURSOR SKIP
   {"keys":["super+k", "super+d"], "command":"file_diff_menu"},
  
+
+  ////////////////////////////////////////////////////////////
+  //
+  //  plugin: FILE HISTORY
+  //
+  //  OPEN RECENT FILE (PROJECT):   [⌘]+[Shift]+T
+  //  - clobbers plugin default: OPEN LATEST CLOSED
+  //
+  //  plus plugin defaults:
+  //  OPEN RECENT FILE (GLOBAL):    [⌘]+[⌥]+[Shift]+T
+  { "keys": ["super+shift+t"],     "command": "open_recently_closed_file"},
+
+
   ////////////////////////////////////////////////////////////
   //
   //  plugin: FILTER LINES
@@ -280,6 +298,16 @@
 
   ////////////////////////////////////////////////////////////
   //
+  //  plugin: PRETTY JSON
+  //
+  //  plugin defaults:
+  //  - JSON query with jq:         [⌘]+K, [⌘]+J
+  //
+  //  clobbers unfold_all, [⌘]+K, [⌘]+J
+  {"command":"jq_pretty_json", "keys":["super+k", "super+j"]},
+
+  ////////////////////////////////////////////////////////////
+  //
   //  plugin: SCHEMR
   //
   //  plugin defaults:
@@ -321,12 +349,20 @@
   //  BOOKMARKS, GOTO BOOKMARK:     [^]+F3
   //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3
   //  BOOKMARKS, CLEAR ALL:         [⌘]+[^]+F3
-  {"keys":["super+f3"], "command":"sublime_bookmark", "args":{"type":"toggle_line" }},
-  {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
-  {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
-  {"keys":["f3"], "command":"sublime_bookmark", "args":{"type":"goto_next"}},
-  {"keys":["shift+f3"], "command":"sublime_bookmark", "args":{"type":"goto_previous"}},
-  {"keys":["super+ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"remove_all"}},
+  //
+  {"keys":["super+f3"], "command":"toggle_bookmark", "args":{"type":"toggle_line" }},
+  // {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
+  // {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
+  {"keys":["f3"], "command":"next_bookmark", "args":{"type":"goto_next"}},
+  {"keys":["shift+f3"], "command":"prev_bookmark", "args":{"type":"goto_previous"}},
+  {"keys":["super+ctrl+f3"], "command":"clear_bookmarks", "args":{"type":"remove_all"}},
+  //
+  // {"keys":["super+f3"], "command":"sublime_bookmark", "args":{"type":"toggle_line" }},
+  // {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
+  // {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
+  // {"keys":["f3"], "command":"sublime_bookmark", "args":{"type":"goto_next"}},
+  // {"keys":["shift+f3"], "command":"sublime_bookmark", "args":{"type":"goto_previous"}},
+  // {"keys":["super+ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"remove_all"}},
   //
   //  - disable plugin defaults:
   // [^]+F2          {"command":"noop", "keys":["ctrl+f2"]},
