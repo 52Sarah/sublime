@@ -9,7 +9,7 @@
 
     // Experimental: Creates a visible bar at the beginning of all lines between
     // multiline bracket spans.
-    "content_highlight_bar": true,
+    // "content_highlight_bar": true,
 
     // If enabled with `show_offscreen_bracket_popup`,the popup will be shown
     // even if brackets are onscreen.

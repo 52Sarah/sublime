@@ -4,3 +4,5 @@ Package Control.user-ca-bundle
 *.sublime-package.zip
 *.tmTheme.chback
 
+packages/user/FileHistory_*.json
+

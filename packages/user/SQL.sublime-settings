@@ -1,0 +1,4 @@
+// These settings override both User and Default settings for the SQL syntax
+{
+  "color_scheme": "Packages/Dayle Rees Color Schemes/sublime/contrast/slime-contrast.tmTheme"
+}

@@ -106,6 +106,10 @@
   //  - default [⌘]+D remapped to DELETE LINE
   {"keys":["ctrl+g"], "command":"find_under_expand"},
   //
+  //  MULTI-CURSOR SPLT LINES:      [⌥]+G
+  //  - plus default:               [⌘]+[Shift]+L
+  { "keys": ["alt+g"], "command": "split_selection_into_lines" },
+  //
   //  MULTI-CURSOR SKIP:            [⌘]+K, [^]+G
   //  - default [⌘]+K, [⌘]+D mapped to FILEDIFFS MENU
   {"keys":["super+k", "ctrl+g"], "command":"find_under_expand_skip"},
