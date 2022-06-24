@@ -31,8 +31,8 @@
 		"*.ttf",
 		"*.zip"
 	],
-	"bold_folder_labels": true,
-	"color_scheme": "Packages/User/color-schemes/Clouds Midnight.tmTheme",
+	"bold_folder_labe∞ls": true,
+	"color_scheme": "Packages/User/color-schemes/One Light.sublime-color-scheme",
 	"detect_indentation": false,
 	"drag_text": false,
 	"draw_white_space": "none",
@@ -66,7 +66,7 @@
 		".vscode"
 	],
 	"font_face": "Hack",
-	"font_size": 17,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages":
@@ -74,6 +74,10 @@
 		"Markdown",
 		"Vintage"
 	],
+	"keymaps":
+	{
+		"show_pretty_keys": false
+	},
 	"line_numbers": true,
 	"match_brackets_angle": true,
 	"native_tabs": "disabled",

@@ -4,31 +4,26 @@
   notes, keystrokes are an attempt to match up with Intellij IDEA.
 */
 [
+  //  DISABLE UNUSED KEYMAPS:
+  {"command":"noop", "keys":["ctrl+d"]},      // delete forward
+
   //  AUTO-INDENT:                  [⌘]+K, [⌘]+I
   {"keys":["super+k", "super+i"], "command":"reindent", "args":{"single_line":true}},
 
-  //
   //  Sublime's built-in bookmark system.
   //  This is an iteration atop IntelliJ's scheme, which I've modified there to line up.
-  //  These keys are generally superseded by SUBLIME BOOKMARKS, below.
-  //
   //  BOOKMARK, TOGGLE:             [⌘]+F3
-  //  overriden by plugin
-  //  disable defaults: [⌘]+F2 or [⌃]+[Shift]+R
-  {"command":"noop", "keys":["super+f2"]},      // toggle_bookmark
-  {"command":"noop", "keys":["ctrl+shift+r"]},  // toggle_bookmark
-  //
+  //  BOOKMARKS, GOTO BOOKMARK:     [^]+F3
   //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3
-  //  overriden by plugin
-  //  disable defaults: F2 or [⌃]+R / [Shift]-F2
-  {"command":"noop", "keys":["f2"]},            // next_bookmark
-  {"command":"noop", "keys":["ctrl+r"]},        // next_bookmark
-  {"command":"noop", "keys":["shift+f2"]},      // prev_bookmark
+  //  BOOKMARKS, CLEAR ALL:         [⌘]+[^]+F3
   //
-  //  BOOKMARKS, CLEAR:             [⌘]+[^]+F3
-  //  overriden by plugin
-  //  disable default: [⌘]+[Shift]+F2
-  {"command":"noop", "keys":["super+shift+f2"]},  // clear_bookmarks
+  {"keys":["super+f3"], "command":"toggle_bookmark", "args":{"type":"toggle_line" }},
+  {"keys":["f3"], "command":"next_bookmark", "args":{"type":"goto_next"}},
+  {"keys":["shift+f3"], "command":"prev_bookmark", "args":{"type":"goto_previous"}},
+  {"keys":["super+ctrl+f3"], "command":"clear_bookmarks", "args":{"type":"remove_all"}},
+  
+  //  COLOR SCHEME:                 [⌥]+F5
+  {"keys":["alt+f5"], "command":"select_color_scheme"},
 
 
   //  COMMAND PALETTE:              [⌘]+[Shift]+A
@@ -48,7 +43,7 @@
   {"keys":["super+k", "super+shift+r"], "command":"toggle_regex", "args":[{"key":"setting.is_widget", "operator":"equal", "operand":true }],},
   //
   //  FIND, TOGGLE CS/CI:           [⌘]+K, [⌘]+[Shift]+C
-  //  - plus default:               [⌘]+[⌥]+C
+  //  - default:                    [⌘]+[⌥]+C clobbered by INSET TO COLUMN
   {"keys":["super+k", "super+shift+c"], "command":"toggle_case_sensitive", "args":[{"key":"setting.is_widget", "operator":"equal", "operand":true }],},
 
 
@@ -151,7 +146,6 @@
 
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: BRACKET HIGHLIGHTER
   //
   //  TOGGLE GLOBAL ENABLE:       [^]+B, [^]+B
@@ -160,32 +154,38 @@
   {"keys":["ctrl+b", "ctrl+shift+b"], "command":"bh_toggle_high_visibility"},
   //
   //  JUMP TO MATCHING BRACKET:   [^]+B, [^]+M
-  //  JUMP TO LEFT BRACKET:       [^]+B, [^]+UP or [^]+B, [^]+LEFT
-  //  JUMP TO RIGHT BRACKET:      [^]+B, [^]+DOWN or [^]+B, [^]+RIGHT
+  //  JUMP TO OFFSCREEN BRACKET:  [^]+B, [^]+[Shift]+M
   {"keys":["ctrl+b", "ctrl+m"], "command":"bh_key", "args":{"plugin":{"args":{"select":"right", "alternate":true}, "command":"bh_modules.bracketselect", "type":["__all__"]}}, "lines":true, "no_outside_adj":null},
-  {"keys":["ctrl+b", "ctrl+up"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
-  {"keys":["ctrl+b", "ctrl+left"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
-  {"keys":["ctrl+b", "ctrl+down"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right"}}}},
+  {"keys":["ctrl+b", "ctrl+shift+m"], "command":"bh_offscreen_popup"},
+
+  //  JUMP TO LEFT BRACKET:       [^]+B, [^]+UP or [^]+B, [^]+LEFT or [^]+B, [^]+L
+  //  JUMP TO RIGHT BRACKET:      [^]+B, [^]+DOWN or [^]+B, [^]+RIGHT or [^]+B, [^]+R
+  {"keys":["ctrl+b", "ctrl+up"],    "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
+  {"keys":["ctrl+b", "ctrl+left"],  "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
+  {"keys":["ctrl+b", "ctrl+l"],     "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left"}}}},
+  {"keys":["ctrl+b", "ctrl+down"],  "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right"}}}},
   {"keys":["ctrl+b", "ctrl+right"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right"}}}},
+  {"keys":["ctrl+b", "ctrl+r"],     "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right"}}}},
   //
-  //  SELECT TO LEFT BRACKET:     [^]+B, [^]+[Shift]+UP or [^]+B, [^]+[Shift]+LEFT
-  //  SELECT TO RIGHT BRACKET:    [^]+B, [^]+[Shift]+DOWN or [^]+B, [^]+[Shift]+RIGHT
-  {"keys":["ctrl+b", "ctrl+shift+up"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
-  {"keys":["ctrl+b", "ctrl+shift+left"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
-  {"keys":["ctrl+b", "ctrl+shift+down"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right", "extend":true}}}},
+  //  SELECT TO LEFT BRACKET:     [^]+B, [^]+[Shift]+UP or [^]+B, [^]+[Shift]+LEFT or [^]+B, [^]+[Shift]+L
+  //  SELECT TO RIGHT BRACKET:    [^]+B, [^]+[Shift]+DOWN or [^]+B, [^]+[Shift]+RIGHT or [^]+B, [^]+[Shift]+R
+  {"keys":["ctrl+b", "ctrl+shift+up"],    "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+left"],  "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+l"],     "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"left", "extend":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+down"],  "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right", "extend":true}}}},
   {"keys":["ctrl+b", "ctrl+shift+right"], "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right", "extend":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+r"],     "command":"bh_key", "args":{"no_outside_adj":null, "no_block_mode":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"select":"right", "extend":true}}}},
   //
-  //  SELECT TEXT BETWEEN BRACKETS:   [^]+B, [^]+S
-  //  SELECT TEXT INCLUDING BRACKETS: [^]+B, [^]+[Shift]+S
-  {"keys":["ctrl+b", "ctrl+s"], "command":"bh_key", "args":{"no_outside_adj":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect"}}},
-  {"keys":["ctrl+b", "ctrl+shift+s"], "command":"bh_key", "args":{"no_outside_adj":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"always_include_brackets":true}}}},
+  //  SELECT TEXT INCLUDING BRACKETS: [^]+B, [^]+S
+  //  SELECT TEXT BETWEEN BRACKETS:   [^]+B, [^]+[Shift]+S
+  {"keys":["ctrl+b", "ctrl+s"], "command":"bh_key", "args":{"no_outside_adj":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect", "args":{"always_include_brackets":true}}}},
+  {"keys":["ctrl+b", "ctrl+shift+s"], "command":"bh_key", "args":{"no_outside_adj":null, "lines" : true, "plugin":{"type":["__all__"], "command":"bh_modules.bracketselect"}}},
   //
   //  WRAP SELECTION WITH BRACKETS:   [^]+B, [^]+W
   {"keys":["ctrl+b", "ctrl+w"], "command":"wrap_brackets"},
 
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: EXTENDED TAB SWITCHER
   //
   //  LIST FILES IN WINDOW:         [⌃]+TAB
@@ -200,7 +200,6 @@
 
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: FILE DIFFS
   //
   //  DIFF MENU:                    [⌘]+K, [⌘]+D
@@ -209,7 +208,6 @@
  
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: FILE HISTORY
   //
   //  OPEN RECENT FILE (PROJECT):   [⌘]+[Shift]+T
@@ -221,7 +219,6 @@
 
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: FILTER LINES
   //
   //  KEEP LINES WITH REGEX:        [⌘]+K, [⌘]+F
@@ -234,7 +231,6 @@
   //  - KEEP LINES WITH STRING:     [⌘]+K, [⌘]+S
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: GIT GUTTER
   //
   //  NEXT/PREV CHANGE:             F7 / [Shift]+F7
@@ -260,21 +256,31 @@
   //  - COMPARE TAG:                [⌘]+[⌥]+[Shift]+C, T
 
   ////////////////////////////////////////////////////////////
+  //  plugin: INSERT TO COLUMN
   //
+  //  INSERT TO COLUMN:             [⌘]+K, [⌘]+C
+  //  - clobbers default:           toggle search cvase
+  {"keys":["super+k", "super+c"], "command":"insert_to_column"},
+ 
+  ////////////////////////////////////////////////////////////
+  //  plugin: LOCAL HISTORY
+  //
+  //  OPEN LOCAL HISTORY MENU:      [⌘]+K, [⌘]+H
+  {"keys":["super+k", "super+h"], "command":"history_menu"},
+
+  ////////////////////////////////////////////////////////////
   //  plugin: MARKDOWN PREVIEW
   //
-  // PREVIEW IN BROWSER:            [⌘]+F12
+  //  PREVIEW IN BROWSER:           [⌘]+F12
   {"keys":["super+f12"], "command":"markdown_preview_select", "args":{"target":"browser"}},
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: OPEN
   //
   //  plugin default:
   //  - OPEN/BROWSE FILES:          [⌘]+[Shift]+O
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: ORIGAMI
   //
   //  plugin defaults:
@@ -292,7 +298,6 @@
   {"command":"noop", "keys":["super+k", "super+alt+left"]},
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: PREFERENCES HELPER
   //
   //  plugin defaults:
@@ -301,7 +306,6 @@
   //  - TOGGLE DEFAULT/USER PREFS:  [⌘]+[⌥]+UP
 
   ////////////////////////////////////////////////////////////
-  //
   //  plugin: PRETTY JSON
   //
   //  plugin defaults:
@@ -311,19 +315,6 @@
   {"command":"jq_pretty_json", "keys":["super+k", "super+j"]},
 
   ////////////////////////////////////////////////////////////
-  //
-  //  plugin: SCHEMR
-  //
-  //  plugin defaults:
-  //  - LIST ALL SCHEMES:           [⌥]+F5
-  //  - NEXT/PREV SCHEME:           [⌥]+F7 / [⌥]+F8
-  //  - RANDOM SCHEME:              [⌥]+F10
-  //  - LIST FAV SCHEMES:           [⌥]+[Shift]+F5
-  //  - NEXT/PREV FAV SCHEME:       [⌥]+[Shift]+F8 / [⌥]+[Shift]+F7
-  //  - RANDOM FAV SCHEME:          [⌥]+[Shift]+F10
-  
-  ////////////////////////////////////////////////////////////
-  //
   //  plugin: SIDEBAR ENHANCEMENTS
   //
   //  FILE, MOVE:                   F6
@@ -344,45 +335,7 @@
   //  - OPEN IN BROWSER:            F12
   {"keys":["f12"], "command":"side_bar_open_in_browser", "args":{"browser":"chrome"}},
 
-  ////////////////////////////////////////////////////////////
-  //
-  //  plugin: SUBLIME BOOKMARKS
-  //
-  //  BOOKMARK, TOGGLE:             [⌘]+F3
-  //  BOOKMARK, ADD [named]:        [⌥]+F3
-  //  BOOKMARKS, GOTO BOOKMARK:     [^]+F3
-  //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3
-  //  BOOKMARKS, CLEAR ALL:         [⌘]+[^]+F3
-  //
-  {"keys":["super+f3"], "command":"toggle_bookmark", "args":{"type":"toggle_line" }},
-  // {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
-  // {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
-  {"keys":["f3"], "command":"next_bookmark", "args":{"type":"goto_next"}},
-  {"keys":["shift+f3"], "command":"prev_bookmark", "args":{"type":"goto_previous"}},
-  {"keys":["super+ctrl+f3"], "command":"clear_bookmarks", "args":{"type":"remove_all"}},
-  //
-  // {"keys":["super+f3"], "command":"sublime_bookmark", "args":{"type":"toggle_line" }},
-  // {"keys":["alt+f3"], "command":"sublime_bookmark", "args":{"type":"add" }},
-  // {"keys":["ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"goto"}},
-  // {"keys":["f3"], "command":"sublime_bookmark", "args":{"type":"goto_next"}},
-  // {"keys":["shift+f3"], "command":"sublime_bookmark", "args":{"type":"goto_previous"}},
-  // {"keys":["super+ctrl+f3"], "command":"sublime_bookmark", "args":{"type":"remove_all"}},
-  //
-  //  - disable plugin defaults:
-  // [^]+F2          {"command":"noop", "keys":["ctrl+f2"]},
-  // [^]+[Shift]+F2  {"command":"noop", "keys":["ctrl+shift+f2"]},
-  // F2              {"command":"noop", "keys":["f2"]},
-  // [Shift]+F2      {"command":"noop", "keys":["shift+f2"]},
-  //
-  //
-  // // in addition to overriding the OOTB bookmark keys, add [⌘]B sequences
-  // , {"keys":["super+b"], "command":"noop"}  // have to turn [⌘]B off so it can be a combo prefix
-  // // [⌘]B, [⌘]B   toggle bookmark
-  // // [⌘]B, [⌘]N   next bookmark
-  // // [⌘]B, [⌘]P   previous bookmark
-  // // [⌘]B, [⌘]B   goto bookmark
-
-  //
+ ////////////////////////////////////////////////////////////
   //  plugin: TEXT PASTRY
   //
   //  plugin defaults:
@@ -394,14 +347,6 @@
   //   {"keys":["super+alt+n"], "command":"text_pastry_show_command_line", "args":{"text":"" } },
   //   {"keys":["super+alt+b"], "command":"text_pastry_redo" },
   //
-  //  plugin: THEMR
-  //
-  //  plugin defaults:
-  //  - NEXT/PREV FAV THEME:        [⌘]+[Shift]+F8 / [⌘]+[Shift]+F7
-  //  - RANDOM FAV THEME:           [⌘]+[Shift]+F10
-  //  - LIST ALL THEMES:            [⌥]+F5
-  //  - NEXT/PREV THEME:            [⌘]+F7 / [⌘]+F8
-  //  - RANDOM THEME:               [⌘]+F10
 ]
 
 //  ECLIPSE

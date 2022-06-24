@@ -1,19 +1,18 @@
 /*
- * User overrides, different from defaults, only.
+ * User overrides, ONLY different from defaults.
  */
 {
-    // Enable high visibility by default when sublime starts up
-    // If sublime is already running and this gets changed,
-    // you will not see any changes (restart required to see change)
-    // "high_visibility_enabled_by_default": true,
-
     // Experimental: Creates a visible bar at the beginning of all lines between
     // multiline bracket spans.
     // "content_highlight_bar": true,
 
+    // Experimental: Align the content highlight bar at the bracket indent level
+    // "align_content_highlight_bar": true,
+
+
     // If enabled with `show_offscreen_bracket_popup`,the popup will be shown
     // even if brackets are onscreen.
-    "show_bracket_popup_always": true,
+    // "show_bracket_popup_always": true,
 
     // Adjust number of lines of additional context
     // that are shown when brackets are vertically off screen.
@@ -22,10 +21,8 @@
     "popup_line_context": 4,
 
     // Experimental: Use `popup_bracket_emphasis` to customize the popup's bracket emphasis color
-    "use_custom_popup_bracket_emphasis": true,
+    // "use_custom_popup_bracket_emphasis": true,
 
-    // Experimental: Align the content highlight bar at the bracket indent level
-    "align_content_highlight_bar": true,
 
     // Character threshold to search
     "search_threshold": 50000,
