@@ -70,7 +70,8 @@
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
-    "Vintage",
+    "Markdown",
+		"Vintage",
 	],
 	"keymaps":
 	{
