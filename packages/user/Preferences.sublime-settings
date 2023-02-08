@@ -18,6 +18,8 @@
 	[
 		"*.class",
 		"*.dds",
+    "*.dylib",
+    "*.dylib.*",
 		"*.eot",
 		"*.gif",
 		"*.ico",
@@ -26,13 +28,14 @@
 		"*.jpg",
 		"*.png",
 		"*.pdf",
+    "*.so",
 		"*.swf",
 		"*.tga",
 		"*.ttf",
-		"*.zip"
+		"*.zip",
 	],
 	"bold_folder_labe∞ls": true,
-	"color_scheme": "Breakers.sublime-color-scheme",
+  "color_scheme": "Breakers.sublime-color-scheme",
 	"detect_indentation": false,
 	"drag_text": false,
 	"draw_white_space": "none",
@@ -55,6 +58,7 @@
 	"find_selected_text": true,
 	"folder_exclude_patterns":
 	[
+    ".brew",
 		"CVS",
 		".git/logs",
 		".git/objects",
@@ -66,11 +70,10 @@
 		".vscode"
 	],
 	"font_face": "Hack",
-	"font_size": 16,
+	"font_size": 17,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
-    "Markdown",
 		"Vintage",
 	],
 	"keymaps":
