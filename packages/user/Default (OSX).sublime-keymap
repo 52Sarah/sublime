@@ -51,6 +51,16 @@
   //  - plus default:               [⌘]+[⌥]+DOWN
   {"keys":["super+b"], "command":"goto_definition"},
   //
+  //  GOTO LINE START/END:          HOME / END
+  //  SELECT TO LINE START/END:     [Shift]+HOME / [Shift]+END
+  //  - plus defaults:
+  //    GOTO START/END:             [⌘]+LEFT / [⌘]+RIGHT
+  //    SELECT TO START/END:        [⌘]+[Shift]+LEFT / [⌘]+[Shift]+RIGHT
+  {"keys":["home"],       "command":"move_to", "args":{"to":"bol"}},
+  {"keys":["end"],        "command":"move_to", "args":{"to":"eol"}},
+  {"keys":["shift+home"], "command":"move_to", "args":{"to":"bol", "extend":true}},
+  {"keys":["shift+end"],  "command":"move_to", "args":{"to":"eol", "extend":true}},
+  //
   //  GOTO FILE START/END:          [⌘]+HOME / [⌘]+END
   //  SELECT TO FILE START/END:     [⌘]+[Shift]+HOME / [⌘]+[Shift]+END
   //  - plus defaults:
@@ -101,9 +111,9 @@
   //  - default [⌘]+D remapped to DELETE LINE
   {"keys":["ctrl+g"], "command":"find_under_expand"},
   //
-  //  MULTI-CURSOR SPLT LINES:      [⌥]+G
+  //  MULTI-CURSOR SPLT LINES:      [⌥]+[Shift]+G
   //  - plus default:               [⌘]+[Shift]+L
-  { "keys": ["alt+g"], "command": "split_selection_into_lines" },
+  { "keys": ["alt+shift+g"], "command": "split_selection_into_lines" },
   //
   //  MULTI-CURSOR SKIP:            [⌘]+K, [^]+G
   //  - default [⌘]+K, [⌘]+D mapped to FILEDIFFS MENU
