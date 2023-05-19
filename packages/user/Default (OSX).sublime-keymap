@@ -43,7 +43,7 @@
   {"keys":["super+k", "super+shift+r"], "command":"toggle_regex", "args":[{"key":"setting.is_widget", "operator":"equal", "operand":true }],},
   //
   //  FIND, TOGGLE CS/CI:           [⌘]+K, [⌘]+[Shift]+C
-  //  - default:                    [⌘]+[⌥]+C clobbered by INSET TO COLUMN
+  //  - default:                    [⌘]+[⌥]+C clobbered by INSERT TO COLUMN
   {"keys":["super+k", "super+shift+c"], "command":"toggle_case_sensitive", "args":[{"key":"setting.is_widget", "operator":"equal", "operand":true }],},
 
 
@@ -89,6 +89,7 @@
   {"keys":["ctrl+."], "command":"auto_complete"},
   {"keys":["ctrl+ "], "command":"auto_complete"},
 
+
   //  KEY BINDINGS:                 [⌘]+[⌃]+COMMA
   {"keys":["super+ctrl+,"], "command":"edit_settings", "args":{"base_file":"${packages}/Default/Default ($platform).sublime-keymap", "default":"[\n\t$0\n]\n"}},
 
@@ -111,27 +112,30 @@
   //  - default [⌘]+D remapped to DELETE LINE
   {"keys":["ctrl+g"], "command":"find_under_expand"},
   //
-  //  MULTI-CURSOR SPLT LINES:      [⌥]+[Shift]+G
+  //  MULTI-CURSOR SPLIT LINES:     [⌥]+[Shift]+G
   //  - plus default:               [⌘]+[Shift]+L
   { "keys": ["alt+shift+g"], "command": "split_selection_into_lines" },
+  //
+  //  MULTI-CURSOR UNSELECT LAST:   [^]+[Shift]+G
+  { "keys": ["ctrl+shift+g"], "command": "soft_undo" },
   //
   //  MULTI-CURSOR SKIP:            [⌘]+K, [^]+G
   //  - default [⌘]+K, [⌘]+D mapped to FILEDIFFS MENU
   {"keys":["super+k", "ctrl+g"], "command":"find_under_expand_skip"},
 
 
-  //  PROJECT, EDIT:                [⌘]­­­+[⌥]+COMMA
+  //  PROJECT, EDIT:                [⌘]+[⌥]+COMMA
   {"keys":["super+alt+,"], "command":"open_file", "args": {"file":"${project}"}},
   //
   //  PROJECT, REFRESH (FOLDERS):   [⌘]+[⌥]+R
   //  - clobbers default: TOGGLE REGEX
   {"keys":["super+alt+r"], "command":"refresh_folder_list"},
   //
-  //  PROJECT, CLOSE:                [⌘]­­­+K, [⌘]­­­+[Shift]+W
+  //  PROJECT, CLOSE:                [⌘]+K, [⌘]+[Shift]+W
   {"keys":["super+k", "super+shift+w"], "command":"close_workspace"},
 
 
-  //  REVERT/RELOAD FILE:           [⌘]­­­+[⌃]+R
+  //  REVERT/RELOAD FILE:           [⌘]+[⌃]+R
   {"keys":["super+ctrl+r"], "command":"revert"},
 
 
@@ -195,18 +199,19 @@
   {"keys":["ctrl+b", "ctrl+w"], "command":"wrap_brackets"},
 
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: EXTENDED TAB SWITCHER
-  //
-  //  LIST FILES IN WINDOW:         [⌃]+TAB
-  //  - similar to Intellij
-  //  LIST FILES IN PANE:           [⌃]+[Shift]+TAB
-  {"keys":["ctrl+tab"], "command":"extended_switcher", "args":{"list_mode":"window"}},
-  {"keys":["shift+ctrl+tab"], "command":"extended_switcher", "args":{"list_mode":"active_group"}},
-  //
-  //  plus plugin defaults:
-  //  LIST FILES IN WINDOW:       [⌥]+[⌃]+TAB
-  //  LIST FILES IN PANE:         [⌥]+[⌃]+[Shift]+TAB
+  // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: EXTENDED TAB SWITCHER
+  // //
+  // //  LIST FILES IN WINDOW:         [⌃]+TAB
+  // //  - similar to Intellij
+  // //  LIST FILES IN PANE:           [⌃]+[Shift]+TAB
+  // {"keys":["ctrl+tab"], "command":"extended_switcher", "args":{"list_mode":"window"}},
+  // {"keys":["shift+ctrl+tab"], "command":"extended_switcher", "args":{"list_mode":"active_group"}},
+  // //
+  // //  plus plugin defaults:
+  // //  LIST FILES IN WINDOW:       [⌥]+[⌃]+TAB
+  // //  LIST FILES IN PANE:         [⌥]+[⌃]+[Shift]+TAB
 
 
   ////////////////////////////////////////////////////////////
@@ -217,28 +222,29 @@
   {"keys":["super+k", "super+d"], "command":"file_diff_menu"},
  
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: FILE HISTORY
-  //
-  //  OPEN RECENT FILE (PROJECT):   [⌘]+[Shift]+T
-  //  - clobbers plugin default: OPEN LATEST CLOSED
-  //
-  //  plus plugin defaults:
-  //  OPEN RECENT FILE (GLOBAL):    [⌘]+[⌥]+[Shift]+T
-  { "keys": ["super+shift+t"],     "command": "open_recently_closed_file"},
+  // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: FILE HISTORY
+  // //
+  // //  OPEN RECENT FILE (PROJECT):   [⌘]+[Shift]+T
+  // //  - clobbers plugin default: OPEN LATEST CLOSED
+  // //
+  // //  plus plugin defaults:
+  // //  OPEN RECENT FILE (GLOBAL):    [⌘]+[⌥]+[Shift]+T
+  // { "keys": ["super+shift+t"],     "command": "open_recently_closed_file"},
 
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: FILTER LINES
-  //
-  //  KEEP LINES WITH REGEX:        [⌘]+K, [⌘]+F
-  //  EXCLUDE LINES W REGEX:        [⌘]+K, [⌘]+[Shift]+F
-  {"keys":["super+k", "super+f"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"regex"}},
-  {"keys":["super+k", "super+shift+f"], "command":"prompt_filter_to_lines", "args":{"invert_search":true, "search_type":"regex"}},
-  //
-  //  plus plugin defaults:
-  //  - KEEP LINES WITH REGEX:      [⌘]+K, [⌘]+R
-  //  - KEEP LINES WITH STRING:     [⌘]+K, [⌘]+S
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: FILTER LINES
+  // //
+  // //  KEEP LINES WITH REGEX:        [⌘]+K, [⌘]+F
+  // //  EXCLUDE LINES W REGEX:        [⌘]+K, [⌘]+[Shift]+F
+  // {"keys":["super+k", "super+f"], "command":"prompt_filter_to_lines", "args":{"invert_search":false, "search_type":"regex"}},
+  // {"keys":["super+k", "super+shift+f"], "command":"prompt_filter_to_lines", "args":{"invert_search":true, "search_type":"regex"}},
+  // //
+  // //  plus plugin defaults:
+  // //  - KEEP LINES WITH REGEX:      [⌘]+K, [⌘]+R
+  // //  - KEEP LINES WITH STRING:     [⌘]+K, [⌘]+S
 
   ////////////////////////////////////////////////////////////
   //  plugin: GIT GUTTER
@@ -265,18 +271,20 @@
   //  - COMPARE BRANCH:             [⌘]+[⌥]+[Shift]+C, B
   //  - COMPARE TAG:                [⌘]+[⌥]+[Shift]+C, T
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: INSERT TO COLUMN
-  //
-  //  INSERT TO COLUMN:             [⌘]+K, [⌘]+C
-  //  - clobbers default:           toggle search cvase
-  {"keys":["super+k", "super+c"], "command":"insert_to_column"},
+  // // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: INSERT TO COLUMN
+  // //
+  // //  INSERT TO COLUMN:             [⌘]+K, [⌘]+C
+  // //  - clobbers default:           toggle search cvase
+  // {"keys":["super+k", "super+c"], "command":"insert_to_column"},
  
-  ////////////////////////////////////////////////////////////
-  //  plugin: LOCAL HISTORY
-  //
-  //  OPEN LOCAL HISTORY MENU:      [⌘]+K, [⌘]+H
-  {"keys":["super+k", "super+h"], "command":"history_menu"},
+  // // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: LOCAL HISTORY
+  // //
+  // //  OPEN LOCAL HISTORY MENU:      [⌘]+K, [⌘]+H
+  // {"keys":["super+k", "super+h"], "command":"history_menu"},
 
   ////////////////////////////////////////////////////////////
   //  plugin: MARKDOWN PREVIEW
@@ -284,11 +292,12 @@
   //  PREVIEW IN BROWSER:           [⌘]+F12
   {"keys":["super+f12"], "command":"markdown_preview_select", "args":{"target":"browser"}},
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: OPEN
-  //
-  //  plugin default:
-  //  - OPEN/BROWSE FILES:          [⌘]+[Shift]+O
+  // // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: OPEN
+  // //
+  // //  plugin default:
+  // //  - OPEN/BROWSE FILES:          [⌘]+[Shift]+O
 
   ////////////////////////////////////////////////////////////
   //  plugin: ORIGAMI
@@ -307,22 +316,24 @@
   {"command":"noop", "keys":["super+k", "super+alt+down"]},
   {"command":"noop", "keys":["super+k", "super+alt+left"]},
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: PREFERENCES HELPER
-  //
-  //  plugin defaults:
-  //  - LIST SETTING FILES:         [⌘]+[Shift]+COMMA
-  //  - FILL SETTING WITH DEFAULTS: [⌘]+[Shift]+SEMICOLON
-  //  - TOGGLE DEFAULT/USER PREFS:  [⌘]+[⌥]+UP
+  // // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: PREFERENCES HELPER
+  // //
+  // //  plugin defaults:
+  // //  - LIST SETTING FILES:         [⌘]+[Shift]+COMMA
+  // //  - FILL SETTING WITH DEFAULTS: [⌘]+[Shift]+SEMICOLON
+  // //  - TOGGLE DEFAULT/USER PREFS:  [⌘]+[⌥]+UP
 
-  ////////////////////////////////////////////////////////////
-  //  plugin: PRETTY JSON
-  //
-  //  plugin defaults:
-  //  - JSON query with jq:         [⌘]+K, [⌘]+J
-  //
-  //  clobbers unfold_all, [⌘]+K, [⌘]+J
-  {"command":"jq_pretty_json", "keys":["super+k", "super+j"]},
+  // // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: PRETTY JSON
+  // //
+  // //  plugin defaults:
+  // //  - JSON query with jq:         [⌘]+K, [⌘]+J
+  // //
+  // //  clobbers unfold_all, [⌘]+K, [⌘]+J
+  // {"command":"jq_pretty_json", "keys":["super+k", "super+j"]},
 
   ////////////////////////////////////////////////////////////
   //  plugin: SIDEBAR ENHANCEMENTS
@@ -335,7 +346,7 @@
   //  - clobbers default: SORT
   {"keys":["f5"], "command":"side_bar_duplicate"},
   //
-  //  FILE, RENAME:                 [Shift]­­­+F6
+  //  FILE, RENAME:                 [Shift]+F6
   {"keys":["shift+f6"], "command":"side_bar_rename"},
   //
   //  FIND IN PATHS:                [⌥]+O
@@ -345,18 +356,19 @@
   //  - OPEN IN BROWSER:            F12
   {"keys":["f12"], "command":"side_bar_open_in_browser", "args":{"browser":"chrome"}},
 
- ////////////////////////////////////////////////////////////
-  //  plugin: TEXT PASTRY
-  //
-  //  plugin defaults:
-  //  - SHOW MENU:                  [⌘]+[⌥]+T
-  //  - SHOW COMMAND LINE:          [⌘]+[⌥]+N
-  //  - REDO:                       [⌘]+[⌥]+B     
-  //  default key definitions:
-  //   {"keys":["super+alt+t"], "command":"text_pastry_show_menu" },
-  //   {"keys":["super+alt+n"], "command":"text_pastry_show_command_line", "args":{"text":"" } },
-  //   {"keys":["super+alt+b"], "command":"text_pastry_redo" },
-  //
+  // // Disabled for Accertify, Jan 2023.
+  // ////////////////////////////////////////////////////////////
+  // //  plugin: TEXT PASTRY
+  // //
+  // //  plugin defaults:
+  // //  - SHOW MENU:                  [⌘]+[⌥]+T
+  // //  - SHOW COMMAND LINE:          [⌘]+[⌥]+N
+  // //  - REDO:                       [⌘]+[⌥]+B     
+  // //  default key definitions:
+  // //   {"keys":["super+alt+t"], "command":"text_pastry_show_menu" },
+  // //   {"keys":["super+alt+n"], "command":"text_pastry_show_command_line", "args":{"text":"" } },
+  // //   {"keys":["super+alt+b"], "command":"text_pastry_redo" },
+  // //
 ]
 
 //  ECLIPSE
