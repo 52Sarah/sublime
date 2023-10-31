@@ -108,6 +108,9 @@
   {"keys":["alt+shift+down"], "command":"swap_line_down"},
 
 
+  //  LOCAL HISTORY:                [⌘]+K, [⌘]+[Shift]+L
+  {"keys":["super+k", "super+shift+l"], "command":"history_open"},
+
   //  MULTI-CURSOR:                 [^]+G
   //  - default [⌘]+D remapped to DELETE LINE
   {"keys":["ctrl+g"], "command":"find_under_expand"},
@@ -142,12 +145,13 @@
   //  TOGGLE GUTTER:                [⌘]+[⌥]+U
   {"keys":["super+alt+u"], "command":"toggle_setting", "args":{"setting":"gutter"}},
   //
-  //  TOGGLE LINE NUMBERS:          [⌘]+[⌥]+L or [⌘]+K, [⌘]+N
+  //  TOGGLE LINE NUMBERS:          [⌘]+[⌥]+L or [⌘]+K, [⌘]+[Shift]+N
   {"keys":["super+alt+l"],       "command":"toggle_setting", "args":{"setting":"line_numbers"}},
-  {"keys":["super+k", "super+n"], "command":"toggle_setting", "args":{"setting":"line_numbers"}},
+  {"keys":["super+k", "super+shift+n"], "command":"toggle_setting", "args":{"setting":"line_numbers"}},
   //
-  //  TOGGLE SIDE BAR:              [⌘]+[⌥]+S or [⌘]+[Shift]+F12
+  //  TOGGLE SIDE BAR:              [⌘]+\ or [⌘]+[⌥]+S or [⌘]+[Shift]+F12
   //  - plus default:               [⌘]+K, [⌘]+B
+  {"keys":["super+\\"],  "command":"toggle_side_bar"},
   {"keys":["super+alt+s"],  "command":"toggle_side_bar"},
   {"keys":["super+shift+f12"], "command":"toggle_side_bar"},
   //
@@ -325,15 +329,15 @@
   // //  - FILL SETTING WITH DEFAULTS: [⌘]+[Shift]+SEMICOLON
   // //  - TOGGLE DEFAULT/USER PREFS:  [⌘]+[⌥]+UP
 
-  // // Disabled for Accertify, Jan 2023.
-  // ////////////////////////////////////////////////////////////
-  // //  plugin: PRETTY JSON
-  // //
-  // //  plugin defaults:
-  // //  - JSON query with jq:         [⌘]+K, [⌘]+J
-  // //
-  // //  clobbers unfold_all, [⌘]+K, [⌘]+J
-  // {"command":"jq_pretty_json", "keys":["super+k", "super+j"]},
+  // Enabled for Accertify, Oct 2023.
+  ////////////////////////////////////////////////////////////
+  //  plugin: PRETTY JSON
+  //
+  //  plugin defaults:
+  //  - JSON query with jq:         [⌘]+K, [⌘]+J
+  //
+  //  clobbers unfold_all, [⌘]+K, [⌘]+J
+  {"command":"jq_pretty_json", "keys":["super+k", "super+j"]},
 
   ////////////////////////////////////////////////////////////
   //  plugin: SIDEBAR ENHANCEMENTS
