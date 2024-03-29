@@ -35,7 +35,10 @@
 		"*.zip",
 	],
 	"bold_folder_labe∞ls": true,
-  "color_scheme": "Breakers.sublime-color-scheme",
+  "color_scheme": "Packages/1337 Color Scheme/1337.tmTheme",
+  // "color_scheme": "Mariana.sublime-color-scheme",
+  // "color_scheme": "Packages/BlackBird-ColorScheme/BlackBird-Theme.tmTheme",
+  // "color_scheme": "Packages/10% Too Dull for My Tastes Color Scheme/scotchy.tmTheme",
 	"detect_indentation": false,
 	"drag_text": false,
 	"draw_white_space": "none",
@@ -66,11 +69,12 @@
 		".hg",
 		".idea",
 		".mvn",
+    ".sdkman",
 		".svn",
 		".vscode"
 	],
 	"font_face": "Hack",
-	"font_size": 23,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
@@ -90,7 +94,12 @@
 	"show_tab_close_buttons": false,
 	"tab_completion": false,
 	"tab_size": 2,
+
+  "table_editor_border_style": "grid",
+  "table_editor_keep_space_left": true,
+
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
-	"update_check": false,
+	"update_check": true,
+	"index_files": false,
 }

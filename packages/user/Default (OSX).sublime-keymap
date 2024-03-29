@@ -77,10 +77,13 @@
   {"keys":["super+["], "command":"jump_back"},
   {"keys":["super+]"], "command":"jump_forward"},
   //
+  //  GOTO LINE:                    [⌘]+L
+  //  - clobbers default: expand_selection {"to": "line"}
+  {"keys":["super+l"], "command":"show_overlay", "args":{"overlay":"goto", "text":":"}},
+  //
   //  GOTO SYMBOL:                  [⌘]+[⌥]+O
   //  - clobbers default: TOGGLE OVERWRITE
   {"keys":["super+alt+o"], "command":"show_overlay", "args":{"overlay":"goto", "text":"@"}},
-
 
   //  HIPPIE COMPLETION:            [⌘]+; or[⌥]+/ or [⌃]+.
   //  - plus default:               [⌃]+SPACE
@@ -136,6 +139,9 @@
   //
   //  PROJECT, CLOSE:                [⌘]+K, [⌘]+[Shift]+W
   {"keys":["super+k", "super+shift+w"], "command":"close_workspace"},
+  //
+  //  PROJECT, OPEN RECENT:                [⌘]+K, [⌘]+[Shift]+O
+  {"keys":["super+k", "super+shift+o"], "command":"prompt_open_project_or_workspace"},
 
 
   //  REVERT/RELOAD FILE:           [⌘]+[⌃]+R
