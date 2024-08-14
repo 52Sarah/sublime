@@ -19,7 +19,7 @@
 		"*.a", "*.at",
     "*.bin",
     "*.class",
-		"*.db", "*.dds", "*.dll", "*.dylib", "*.dylib.*",
+		"*.db", "*.dds", "*.dll", "*.docx", "*.dylib", "*.dylib.*",
     "*.ear", "*.eot", "*.exe",
 		"*.gif",
 		"*.ico", "*.idb",
@@ -32,10 +32,11 @@
     "*.sdf", "*.so", "*.suo", "*.swf",
     "*.tar", "*.tga",	"*.tgz", "*.ttf",
     "*.war",
-		"*.zip",
+    "*.xls",
+	"*.zip",
 	],
 	"bold_folder_labe∞ls": true,
-  "color_scheme": "Packages/1337 Color Scheme/1337.tmTheme",
+  	"color_scheme": "Packages/1337 Color Scheme/1337.tmTheme",
   // "color_scheme": "Mariana.sublime-color-scheme",
   // "color_scheme": "Packages/BlackBird-ColorScheme/BlackBird-Theme.tmTheme",
   // "color_scheme": "Packages/10% Too Dull for My Tastes Color Scheme/scotchy.tmTheme",
@@ -74,7 +75,7 @@
 		".vscode"
 	],
 	"font_face": "Hack",
-	"font_size": 16,
+	"font_size": 15,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
@@ -101,5 +102,6 @@
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"update_check": true,
-	"index_files": false,
+	"index_files": true,
+	/*"font_size": 14,*/
 }
