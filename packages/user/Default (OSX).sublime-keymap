@@ -46,6 +46,12 @@
   //  - default:                    [⌘]+[⌥]+C clobbered by INSERT TO COLUMN
   {"keys":["super+k", "super+shift+c"], "command":"toggle_case_sensitive", "args":[{"key":"setting.is_widget", "operator":"equal", "operand":true }],},
 
+  
+  //  FONT SIZE:                    [^]+[Shift]+LESS_THAN, [^]+[Shift]+GREATER_THAN
+  //  - plus default:               [⌘]+PLUS, [⌘]+MINUS
+  { "keys": ["ctrl+shift+."], "command": "increase_font_size" },
+  { "keys": ["ctrl+shift+,"], "command": "decrease_font_size" },
+  
 
   //  GOTO DECLARATION:             [⌘]+B
   //  - plus default:               [⌘]+[⌥]+DOWN
