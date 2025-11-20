@@ -21,7 +21,7 @@
     "*.class",
 		"*.db", "*.dds", "*.dll", "*.docx", "*.dylib", "*.dylib.*",
     "*.ear", "*.eot", "*.exe",
-		"*.gif",
+		"*.gif", "*.gz",
 		"*.ico", "*.idb",
 		"*.jar", "*.jpeg", "*.jpg",
     "*.keystream",
@@ -33,7 +33,7 @@
     "*.tar", "*.tga",	"*.tgz", "*.ttf",
     "*.war",
     "*.xls",
-	"*.zip",
+	  "*.zip",
 	],
 	"bold_folder_labe∞ls": true,
   	"color_scheme": "Packages/1337 Color Scheme/1337.tmTheme",
@@ -75,10 +75,11 @@
 		".vscode"
 	],
 	"font_face": "Hack",
-	"font_size": 16,
+	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
+		"MarkdownPreview",
 		"Vintage",
 	],
 	"keymaps":
@@ -102,6 +103,6 @@
 	"theme": "Adaptive.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"update_check": true,
-	"index_files": true,
+	"index_files": false,
 	/*"font_size": 14,*/
 }

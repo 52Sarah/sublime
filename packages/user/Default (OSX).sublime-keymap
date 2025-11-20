@@ -7,29 +7,31 @@
   //  DISABLE UNUSED KEYMAPS:
   {"command":"noop", "keys":["ctrl+d"]},      // delete forward
 
+
+  //  VIEW - NEXT/PREV:             [^]+RIGHT / [^]+LEFT
+  //  - plus default:               [⌘]+[Shift]+] / [⌘]+[Shift]+[
+  //  - plus default:               [⌘]+[⌥]+RIGHT / [⌘]+[⌥]+LEFT
+  { "keys": ["super+shift+["], "command": "prev_view" },
+  { "keys": ["super+shift+]"], "command": "next_view" },
+
   //  AUTO-INDENT:                  [⌘]+K, [⌘]+I
   {"keys":["super+k", "super+i"], "command":"reindent", "args":{"single_line":true}},
 
   //  Sublime's built-in bookmark system.
   //  This is an iteration atop IntelliJ's scheme, which I've modified there to line up.
-  //  BOOKMARK, TOGGLE:             [⌘]+F3
-  //  BOOKMARKS, GOTO BOOKMARK:     [^]+F3
-  //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3
-  //  BOOKMARKS, CLEAR ALL:         [⌘]+[^]+F3
-  //
+  //  BOOKMARK, TOGGLE:             [⌘]+F3, plus default: [⌘]+F2
+  //  BOOKMARKS, NEXT/PREV:         F3 / [Shift]+F3, plus default: [^]+F2
+  //    
   {"keys":["super+f3"], "command":"toggle_bookmark", "args":{"type":"toggle_line" }},
   {"keys":["f3"], "command":"next_bookmark", "args":{"type":"goto_next"}},
   {"keys":["shift+f3"], "command":"prev_bookmark", "args":{"type":"goto_previous"}},
-  {"keys":["super+ctrl+f3"], "command":"clear_bookmarks", "args":{"type":"remove_all"}},
   
   //  COLOR SCHEME:                 [⌥]+F5
   {"keys":["alt+f5"], "command":"select_color_scheme"},
 
-
   //  COMMAND PALETTE:              [⌘]+[Shift]+A
   //  - plus default:               [⌘]+[Shift]+P
   {"keys":["super+shift+a"], "command":"show_overlay", "args":{"overlay":"command_palette"}},
-
 
   //  FIND/REPLACE IN FILES:        [⌘]+[⌥]+F
   //  - plus default:               [⌘]+[Shift]+F
@@ -45,14 +47,12 @@
   //  FIND, TOGGLE CS/CI:           [⌘]+K, [⌘]+[Shift]+C
   //  - default:                    [⌘]+[⌥]+C clobbered by INSERT TO COLUMN
   {"keys":["super+k", "super+shift+c"], "command":"toggle_case_sensitive", "args":[{"key":"setting.is_widget", "operator":"equal", "operand":true }],},
-
   
   //  FONT SIZE:                    [^]+[Shift]+LESS_THAN, [^]+[Shift]+GREATER_THAN
   //  - plus default:               [⌘]+PLUS, [⌘]+MINUS
   { "keys": ["ctrl+shift+."], "command": "increase_font_size" },
   { "keys": ["ctrl+shift+,"], "command": "decrease_font_size" },
   
-
   //  GOTO DECLARATION:             [⌘]+B
   //  - plus default:               [⌘]+[⌥]+DOWN
   {"keys":["super+b"], "command":"goto_definition"},
@@ -98,10 +98,8 @@
   {"keys":["ctrl+."], "command":"auto_complete"},
   {"keys":["ctrl+ "], "command":"auto_complete"},
 
-
   //  KEY BINDINGS:                 [⌘]+[⌃]+COMMA
   {"keys":["super+ctrl+,"], "command":"edit_settings", "args":{"base_file":"${packages}/Default/Default ($platform).sublime-keymap", "default":"[\n\t$0\n]\n"}},
-
 
   //  LINE, DELETE:                 [⌘]+BACKSPACE
   //  - default [⌘]+D remapped to DUPLICATE LINE
@@ -115,7 +113,6 @@
   //  - plus defaults:              [⌘]+[⌃]+UP / [⌘]+[⌃]+DOWN
   {"keys":["alt+shift+up"],   "command":"swap_line_up"},
   {"keys":["alt+shift+down"], "command":"swap_line_down"},
-
 
   //  LOCAL HISTORY:                [⌘]+K, [⌘]+[Shift]+L
   {"keys":["super+k", "super+shift+l"], "command":"history_open"},
@@ -154,6 +151,11 @@
   {"keys":["super+ctrl+r"], "command":"revert"},
 
 
+  //  SHOW FILES:                   [⌘]+[Shift]+O
+  //  - plus default:               [⌘]+T, [⌘]+P
+  { "keys": ["super+shift+o"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+  
+
   //  TOGGLE GUTTER:                [⌘]+[⌥]+U
   {"keys":["super+alt+u"], "command":"toggle_setting", "args":{"setting":"gutter"}},
   //
@@ -173,6 +175,12 @@
   //  TOGGLE WORD WRAP:             [⌘]+[⌥]+Y or [⌘]+K, [⌘]+W
   {"keys":["super+alt+y"],       "command":"toggle_setting", "args":{"setting":"word_wrap"}},
   {"keys":["super+k", "super+w"], "command":"toggle_setting", "args":{"setting":"word_wrap"}},
+
+
+  //
+  //  UPPERCASE:                    [⌘]+[Shift]+U
+  //  - plus default:               [⌘]+K, [⌘]+U
+  { "keys": ["super+shift+u"], "command": "upper_case" },
 
 
   ////////////////////////////////////////////////////////////
