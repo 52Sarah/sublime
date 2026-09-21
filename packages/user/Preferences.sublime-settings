@@ -36,8 +36,10 @@
 	  "*.zip",
 	],
 	"bold_folder_labe∞ls": true,
-  	"color_scheme": "Packages/1337 Color Scheme/1337.tmTheme",
+  // "color_scheme": "Breakers.sublime-color-scheme",
   // "color_scheme": "Mariana.sublime-color-scheme",
+  // "color_scheme": "Packages/1337 Color Scheme/1337.tmTheme",
+  // "color_scheme": "Packages/3024 Color Scheme/3024 Day.tmTheme",
   // "color_scheme": "Packages/BlackBird-ColorScheme/BlackBird-Theme.tmTheme",
   // "color_scheme": "Packages/10% Too Dull for My Tastes Color Scheme/scotchy.tmTheme",
 	"detect_indentation": false,
@@ -79,7 +81,6 @@
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"ignored_packages": [
-		"MarkdownPreview",
 		"Vintage",
 	],
 	"keymaps":

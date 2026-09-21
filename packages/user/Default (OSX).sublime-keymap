@@ -163,9 +163,9 @@
   {"keys":["super+alt+l"],       "command":"toggle_setting", "args":{"setting":"line_numbers"}},
   {"keys":["super+k", "super+shift+n"], "command":"toggle_setting", "args":{"setting":"line_numbers"}},
   //
-  //  TOGGLE SIDE BAR:              [⌘]+\ or [⌘]+[⌥]+S or [⌘]+[Shift]+F12
+  //  TOGGLE SIDE BAR:              [⌘]+[⌥]+[ or [⌘]+[⌥]+S or [⌘]+[Shift]+F12
   //  - plus default:               [⌘]+K, [⌘]+B
-  {"keys":["super+\\"],  "command":"toggle_side_bar"},
+  {"keys":["super+alt+["],  "command":"toggle_side_bar"},
   {"keys":["super+alt+s"],  "command":"toggle_side_bar"},
   {"keys":["super+shift+f12"], "command":"toggle_side_bar"},
   //
